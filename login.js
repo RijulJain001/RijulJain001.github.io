@@ -1,88 +1,9 @@
 /* ============================================================
    RIJUL JAIN — login.js
-   Access Portal: Boot sequence, typewriter, canvas, cursor
+   Access Portal: Boot sequence, typewriter, cursor
    ============================================================ */
 
 "use strict";
-
-/* ------------------------------------------------------------------
-   1. CANVAS BACKGROUND (same matrix style)
------------------------------------------------------------------- */
-const canvas = document.getElementById("bg-canvas");
-const ctx    = canvas.getContext("2d");
-
-const SNIPPETS = [
-  "jumpcloud users list",
-  "Get-ComputerInfo",
-  "az account show",
-  "workspace migration status",
-  "[+] identity verified",
-  "[+] workspace synced",
-  "fortinet policy review",
-  "device posture check",
-  "onboarding workflow ready",
-  "support queue cleared",
-  "whoami",
-  "[ACCESS GRANTED]",
-  "google workspace healthy",
-  "identity platform ready",
-];
-
-const COLORS = ["#3dffa4", "#2bdcff", "#f7d85a", "#ff4f77", "#3578ff"];
-let cols = [], W = 0, H = 0, lastTs = 0;
-
-function resizeCanvas() {
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  W = window.innerWidth;
-  H = window.innerHeight;
-  canvas.width  = Math.floor(W * dpr);
-  canvas.height = Math.floor(H * dpr);
-  canvas.style.width  = `${W}px`;
-  canvas.style.height = `${H}px`;
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-  const count = Math.max(14, Math.floor(W / 60));
-  cols = Array.from({ length: count }, (_, i) => ({
-    x:      i * (W / count) + Math.random() * 12,
-    y:      Math.random() * H,
-    speed:  14 + Math.random() * 48,
-    color:  COLORS[i % COLORS.length],
-    text:   SNIPPETS[i % SNIPPETS.length],
-    offset: Math.floor(Math.random() * 20),
-  }));
-}
-
-function drawCanvas(ts) {
-  const delta = Math.min((ts - lastTs) / 1000 || 0.016, 0.05);
-  lastTs = ts;
-
-  ctx.fillStyle = "rgba(1, 4, 3, 0.14)";
-  ctx.fillRect(0, 0, W, H);
-  ctx.font = "12px 'JetBrains Mono', Consolas, monospace";
-  ctx.textBaseline = "top";
-
-  cols.forEach((col, i) => {
-    col.y += col.speed * delta;
-    if (col.y > H + 140) {
-      col.y    = -90 - Math.random() * 160;
-      col.text = SNIPPETS[(i + Math.floor(Math.random() * SNIPPETS.length)) % SNIPPETS.length];
-    }
-    for (let j = 0; j < 8; j++) {
-      const y = col.y - j * 20;
-      if (y < -24 || y > H + 24) continue;
-      const alpha = Math.max(0, 0.8 - j * 0.11);
-      const frag  = col.text.slice(0, Math.max(5, col.text.length - j - col.offset));
-      const hex   = col.color.replace("#", "");
-      ctx.fillStyle = `rgba(${parseInt(hex.slice(0,2),16)},${parseInt(hex.slice(2,4),16)},${parseInt(hex.slice(4,6),16)},${alpha})`;
-      ctx.fillText(frag, col.x, y);
-    }
-  });
-  requestAnimationFrame(drawCanvas);
-}
-
-window.addEventListener("resize", resizeCanvas, { passive: true });
-resizeCanvas();
-requestAnimationFrame(drawCanvas);
 
 /* ------------------------------------------------------------------
    2. CURSOR GLOW

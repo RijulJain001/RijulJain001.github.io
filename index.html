@@ -4,13 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rijul Jain | IT Administrator & Security-Focused Portfolio</title>
-  <meta name="description" content="Portfolio of Rijul Jain - Information Technology Administrator with experience in enterprise support, Google Workspace, JumpCloud, Microsoft Azure, and ISO 27001 aligned operations.">
+  <meta name="description" content="Portfolio of Rijul Jain - IT Administrator in Jaipur with hands-on experience in Google Workspace, JumpCloud IAM, Fortinet firewalls, networking, and ISO/IEC 27001 compliance.">
+  <meta name="theme-color" content="#080714">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Rijul Jain | IT Administrator">
+  <meta property="og:description" content="IT Administrator in Jaipur: Google Workspace, JumpCloud IAM, Fortinet firewalls, networking, and ISO/IEC 27001 compliance.">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ===================== PAGE LOADER ===================== -->
   <div class="page-loader" id="page-loader" aria-live="polite" aria-label="Loading portfolio">
@@ -49,7 +56,8 @@
     </div>
   </div>
 
-  <canvas id="code-background" aria-hidden="true"></canvas>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
   <div class="backdrop-glow" aria-hidden="true"></div>
   <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
 
@@ -73,7 +81,7 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
         Terminal
       </button>
-      <a class="button primary btn-sm" id="download-cv-btn" href="assets/Rijul_Jain_Profile.pdf" download aria-label="Download Resume">
+      <a class="button primary btn-sm" id="download-cv-btn" href="assets/Rijul_Jain_Resume.pdf" download aria-label="Download Resume">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Resume
       </a>
@@ -93,20 +101,39 @@
       <a href="#certifications" class="mobile-link">Certifications</a>
       <a href="#skills"         class="mobile-link">Skills</a>
       <a href="#contact"        class="mobile-link">Contact</a>
-      <a href="assets/Rijul_Jain_Profile.pdf" download class="mobile-link mobile-link-dl">⬇ Download Resume</a>
+      <a href="assets/Rijul_Jain_Resume.pdf" download class="mobile-link mobile-link-dl">Download Resume</a>
     </nav>
   </div>
 
-  <main>
+  <main id="main">
 
     <!-- ===================== HERO ===================== -->
     <section id="home" class="hero section-shell">
+      <div class="hero-deco" aria-hidden="true">
+        <svg viewBox="0 0 600 600" fill="none">
+          <defs>
+            <linearGradient id="decoGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#8b5cf6"/><stop offset="0.55" stop-color="#c4b5fd"/><stop offset="1" stop-color="#fbbf24"/>
+            </linearGradient>
+          </defs>
+          <circle cx="300" cy="300" r="290" stroke="url(#decoGrad)" stroke-opacity="0.35" stroke-width="1.5"/>
+          <g class="deco-spin">
+            <circle cx="300" cy="300" r="230" stroke="url(#decoGrad)" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 14" stroke-linecap="round"/>
+            <circle cx="300" cy="70" r="8" fill="#c4b5fd"/><circle cx="530" cy="300" r="5" fill="#fbbf24"/>
+          </g>
+          <g class="deco-spin-rev">
+            <circle cx="300" cy="300" r="165" stroke="#a78bfa" stroke-opacity="0.35" stroke-width="1.5"/>
+            <circle cx="135" cy="300" r="7" fill="#c4b5fd"/><circle cx="300" cy="465" r="5" fill="#8b5cf6"/>
+          </g>
+          <circle cx="300" cy="300" r="100" stroke="url(#decoGrad)" stroke-opacity="0.25" stroke-dasharray="2 10"/>
+        </svg>
+      </div>
       <div class="hero-copy">
         <p class="eyebrow" id="eyebrow-text">rijul@portfolio:~$ <span id="typewriter"></span><span class="cursor-blink">█</span></p>
-        <h1 class="reveal-up">Rijul Jain</h1>
+        <h1 class="reveal-up"><span class="grad-text">Rijul Jain</span></h1>
         <p class="role reveal-up" style="--delay:0.1s">Information Technology Administrator</p>
         <p class="hero-text reveal-up" style="--delay:0.2s">
-          I support enterprise IT operations, streamline identity and workspace management, and strengthen security and compliance across growing teams.
+          I manage IT infrastructure and operations for 450+ employees: identity and access, Google Workspace, Fortinet networking, and ISO/IEC 27001 compliance, with a goal of growing into a security engineer.
         </p>
         <div class="hero-actions reveal-up" style="--delay:0.3s">
           <a class="button primary" id="view-projects-btn" href="#projects">
@@ -122,49 +149,59 @@
         </div>
       </div>
 
-      <div class="profile-panel reveal-up" style="--delay:0.15s">
+      <div class="profile-col reveal-up" style="--delay:0.15s">
+      <div class="profile-panel">
+        <span class="float-chip c1"><i></i>ISO 27001</span>
+        <span class="float-chip c2"><i></i>Workspace</span>
+        <span class="float-chip c3"><i></i>JumpCloud</span>
+        <span class="float-chip c4"><i></i>Fortinet</span>
         <div class="profile-frame">
-          <img src="assets/profile.jpg" alt="Portrait of Rijul Jain" onerror="this.onerror=null; this.src='assets/profile-placeholder.svg';">
+          <img src="assets/profile.jpg" alt="Portrait of Rijul Jain" onerror="this.onerror=null; this.src='assets/profile-placeholder.svg'; this.alt='RJ monogram';">
           <div class="scan-line" aria-hidden="true"></div>
         </div>
         <div class="profile-meta">
           <span class="status-dot"></span>
-          <span>Open to IT infrastructure and security-focused roles</span>
+          <span>Jaipur, India · Open to IT infrastructure and security-focused roles</span>
         </div>
         <div class="terminal-card" aria-label="Operations terminal style profile summary">
           <div class="terminal-top"><span></span><span></span><span></span></div>
           <div class="terminal-lines" id="terminal-lines">
             <p><span class="term-prompt">rijul@itops:~$</span> <span class="term-cmd" id="term-main-cmd"></span></p>
             <p><span class="term-ok">[+]</span> focus: IT operations, IAM, security compliance</p>
-            <p><span class="term-ok">[+]</span> stack: JumpCloud, Azure, Google Workspace, Fortinet</p>
-            <p><span class="term-ok">[+]</span> status: supporting 550+ employees across locations</p>
+            <p><span class="term-ok">[+]</span> stack: JumpCloud, Google Workspace, Fortinet, LAN/WAN</p>
+            <p><span class="term-ok">[+]</span> status: supporting 450+ employees across the organization</p>
           </div>
         </div>
       </div>
+      </div>
     </section>
+
+    <!-- ===================== TECH MARQUEE ===================== -->
+    <div class="marquee" aria-label="Technology stack">
+      <div class="marquee-track">
+        <span class="marquee-item">Google Workspace</span><span class="marquee-item">JumpCloud IAM</span><span class="marquee-item">Fortinet FortiGate</span><span class="marquee-item">ISO/IEC 27001</span><span class="marquee-item">Windows Server</span><span class="marquee-item">Linux</span><span class="marquee-item">LAN / WAN Networking</span><span class="marquee-item">Active Directory</span><span class="marquee-item">UNIRMS</span><span class="marquee-item">WE360</span><span class="marquee-item">IT Asset Management</span><span class="marquee-item">Python</span>
+        <span class="marquee-item" aria-hidden="true">Google Workspace</span><span class="marquee-item" aria-hidden="true">JumpCloud IAM</span><span class="marquee-item" aria-hidden="true">Fortinet FortiGate</span><span class="marquee-item" aria-hidden="true">ISO/IEC 27001</span><span class="marquee-item" aria-hidden="true">Windows Server</span><span class="marquee-item" aria-hidden="true">Linux</span><span class="marquee-item" aria-hidden="true">LAN / WAN Networking</span><span class="marquee-item" aria-hidden="true">Active Directory</span><span class="marquee-item" aria-hidden="true">UNIRMS</span><span class="marquee-item" aria-hidden="true">WE360</span><span class="marquee-item" aria-hidden="true">IT Asset Management</span><span class="marquee-item" aria-hidden="true">Python</span>
+      </div>
+    </div>
 
     <!-- ===================== STATS COUNTER ===================== -->
     <section class="stats-section section-shell" aria-label="Portfolio statistics">
       <div class="stats-grid">
         <div class="stat-card reveal-up" style="--delay:0s">
-          <span class="stat-num" data-target="550" id="stat-users">0</span>
-          <span class="stat-plus">+</span>
+          <div class="stat-value"><span class="stat-num" data-target="450" id="stat-users">0</span><span class="stat-plus">+</span></div>
           <p class="stat-label">Employees Supported</p>
         </div>
         <div class="stat-card reveal-up" style="--delay:0.08s">
-          <span class="stat-num" data-target="5" id="stat-platforms">0</span>
-          <span class="stat-plus">+</span>
+          <div class="stat-value"><span class="stat-num" data-target="5" id="stat-platforms">0</span></div>
           <p class="stat-label">Platforms Managed</p>
         </div>
         <div class="stat-card reveal-up" style="--delay:0.16s">
-          <span class="stat-num" data-target="3" id="stat-roles">0</span>
-          <span class="stat-plus">+</span>
-          <p class="stat-label">IT Roles</p>
+          <div class="stat-value"><span class="stat-num" data-target="3" id="stat-roles">0</span></div>
+          <p class="stat-label">IT Roles Held</p>
         </div>
         <div class="stat-card reveal-up" style="--delay:0.24s">
-          <span class="stat-num" data-target="1" id="stat-team">0</span>
-          <span class="stat-suffix">Team</span>
-          <p class="stat-label">Single-Member IT</p>
+          <div class="stat-value"><span class="stat-num" data-target="2" id="stat-firewalls">0</span></div>
+          <p class="stat-label">FortiGate Firewalls Managed</p>
         </div>
       </div>
     </section>
@@ -182,7 +219,8 @@
           </div>
           <p>
             I am pursuing a Bachelor of Computer Applications at Shridhar University, building a strong
-            foundation in computer science, system administration, networking, and cybersecurity.
+            foundation in computer science, system administration, networking, and cybersecurity, with the
+            goal of becoming a security engineer.
           </p>
         </div>
         <div class="about-card reveal-up" style="--delay:0.12s">
@@ -190,9 +228,9 @@
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
           </div>
           <p>
-            I currently work as an Information Technology Administrator at LMDmax Corp, supporting 550+
-            employees across identity management, workplace tools, infrastructure operations, and ISO 27001
-            aligned security processes.
+            I currently work as an IT Administrator at LMDmax Corp, supporting 450+ employees across
+            identity and access management, Google Workspace, Fortinet networking, IT asset management, and
+            ISO/IEC 27001 compliance.
           </p>
         </div>
       </div>
@@ -206,69 +244,104 @@
       </div>
       <div class="cards-grid">
 
-        <!-- Card 1 -->
         <article class="card reveal-up" style="--delay:0s"
           data-modal="true"
           data-title="Google Workspace Migration"
           data-kicker="Enterprise Email"
-          data-desc="Led the migration from Zoho Mail to Google Workspace, helping the organization move email and collaboration workflows with minimal business disruption."
-          data-details="• Managed the migration from Zoho Mail to Google Workspace&#10;• Supported a smooth transition for business users during active operations&#10;• Helped reduce disruption while collaboration systems were being moved&#10;• Continued supporting Google Workspace as part of day-to-day IT operations"
-          data-tags="Google Workspace,Migration,Admin,Support">
+          data-desc="Executed the migration from Zoho Mail to Google Workspace, moving email and collaboration for 450+ users securely and with minimal operational downtime."
+          data-details="• Executed the Zoho Mail to Google Workspace migration with secure data transfer&#10;• Kept operational downtime to a minimum during the move&#10;• Manage Google Workspace for 450+ users: provisioning, access control, and security policies&#10;• Administer groups, shared drives, and email through the Google Admin Console"
+          data-tags="Google Workspace,Migration,Admin Console,Support">
           <div class="card-accent" aria-hidden="true"></div>
           <p class="card-kicker">Enterprise Email</p>
           <h3>Google Workspace Migration</h3>
-          <p>Moved business email operations from Zoho Mail to Google Workspace with minimal disruption.</p>
-          <div class="tag-row">
-            <span>Google Workspace</span><span>Migration</span><span>Support</span>
-          </div>
+          <p>Moved business email from Zoho Mail to Google Workspace for 450+ users with minimal downtime.</p>
+          <div class="tag-row"><span>Google Workspace</span><span>Migration</span><span>Admin</span></div>
           <button class="card-cta" aria-label="View Google Workspace Migration details">
             View Details
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
         </article>
 
-        <!-- Card 2 -->
         <article class="card reveal-up" style="--delay:0.1s"
           data-modal="true"
-          data-title="JumpCloud Rollout"
+          data-title="JumpCloud IAM Rollout"
           data-kicker="Identity &amp; Access"
-          data-desc="Implemented JumpCloud to centralize identity, device, and access management across the organization."
-          data-details="• Implemented JumpCloud for centralized identity and device administration&#10;• Supported access management across the organization from a single platform&#10;• Helped improve consistency in user onboarding and offboarding workflows&#10;• Strengthened day-to-day access control as part of core IT operations"
-          data-tags="JumpCloud,IAM,Devices,Access">
+          data-desc="Administer JumpCloud as the central identity and device platform, covering SSO, MFA, device enrollment, and the full user lifecycle."
+          data-details="• Configured SSO and MFA for secure access across the organization&#10;• Enrolled and managed devices with endpoint security and policy enforcement&#10;• Handled user lifecycle management, from onboarding to offboarding&#10;• Kept access control consistent as part of core IT operations"
+          data-tags="JumpCloud,IAM,SSO,MFA,Endpoint Management">
           <div class="card-accent" aria-hidden="true"></div>
           <p class="card-kicker">Identity &amp; Access</p>
-          <h3>JumpCloud Rollout</h3>
-          <p>Centralized identity, device, and access management to support a more consistent IT environment.</p>
-          <div class="tag-row">
-            <span>JumpCloud</span><span>IAM</span><span>Access</span>
-          </div>
-          <button class="card-cta" aria-label="View JumpCloud Rollout details">
+          <h3>JumpCloud IAM Rollout</h3>
+          <p>Centralized identity, SSO, MFA, and device management to keep access consistent and secure.</p>
+          <div class="tag-row"><span>JumpCloud</span><span>IAM</span><span>SSO</span></div>
+          <button class="card-cta" aria-label="View JumpCloud IAM Rollout details">
             View Details
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
         </article>
 
-        <!-- Card 3 -->
         <article class="card reveal-up" style="--delay:0.2s"
           data-modal="true"
           data-title="ISO 27001 &amp; Fortinet Operations"
           data-kicker="Security &amp; Compliance"
-          data-desc="Supported ISO 27001 compliance initiatives while administering Fortinet Firewall infrastructure to improve audit readiness and secure access controls."
-          data-details="• Contributed to ISO 27001 audits, documentation reviews, and asset controls&#10;• Supported information security processes aligned with compliance goals&#10;• Administered Fortinet Firewall infrastructure for network security&#10;• Helped maintain secure access controls across the environment"
-          data-tags="ISO 27001,Fortinet,Compliance,Security">
+          data-desc="Support ISO/IEC 27001 compliance and audit activity while administering Fortinet FortiGate 80F and 120G firewalls."
+          data-details="• Configured and maintained FortiGate 80F and 120G firewalls&#10;• Implemented firewall policies, VPN connectivity, NAT, and network security controls&#10;• Maintained IT documentation, security controls, and asset registers for ISO/IEC 27001&#10;• Prepared audit evidence to support compliance activities"
+          data-tags="ISO/IEC 27001,Fortinet,VPN,NAT,Compliance">
           <div class="card-accent" aria-hidden="true"></div>
           <p class="card-kicker">Security &amp; Compliance</p>
           <h3>ISO 27001 &amp; Fortinet Operations</h3>
-          <p>Supported compliance work and secure network controls through ISO 27001 processes and firewall administration.</p>
-          <div class="tag-row">
-            <span>ISO 27001</span><span>Fortinet</span><span>Compliance</span>
-          </div>
+          <p>Firewall administration and ISO/IEC 27001 documentation, controls, and audit evidence.</p>
+          <div class="tag-row"><span>ISO 27001</span><span>Fortinet</span><span>Compliance</span></div>
           <button class="card-cta" aria-label="View ISO 27001 and Fortinet Operations details">
             View Details
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
         </article>
 
+      </div>
+    </section>
+
+    <!-- ===================== ENVIRONMENT ===================== -->
+    <section id="environment" class="content-section section-shell">
+      <div class="section-heading reveal-up">
+        <p class="eyebrow">Environment</p>
+        <h2>How I Run IT at LMDmax</h2>
+        <p class="contact-sub">A simplified overview of what I own day to day. It is not an exact network diagram.</p>
+      </div>
+      <div class="env">
+        <div class="env-band reveal-up">
+          <span class="env-band-title">ISO/IEC 27001 support</span>
+          <div class="tag-row"><span>Documentation</span><span>Security controls</span><span>Asset registers</span><span>Audit evidence</span></div>
+        </div>
+
+        <div class="env-body reveal-up" style="--delay:0.08s">
+          <div class="env-node env-users"><span class="env-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><h3>Users &amp; devices</h3><p>450+ employees on managed devices, from onboarding to offboarding.</p></div>
+          <div class="env-lanes">
+            <div class="env-lane">
+              <span class="env-lane-label">Network path</span>
+              <div class="env-flow">
+                <div class="env-node "><span class="env-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="16" y="16" width="6" height="6" rx="1"/><path d="M12 8v4M5 16v-4h14v4"/></svg></span><h3>Enterprise LAN</h3><p>Structured cabling, switching, VLANs, DHCP, and DNS.</p></div>
+                <span class="env-link" aria-hidden="true"></span>
+                <div class="env-node "><span class="env-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span><h3>FortiGate 80F &amp; 120G</h3><p>Firewall policies, VPN, and NAT.</p></div>
+                <span class="env-link" aria-hidden="true"></span>
+                <div class="env-node "><span class="env-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span><h3>Internet &amp; cloud</h3><p>Reached through the firewall.</p></div>
+              </div>
+            </div>
+            <div class="env-lane">
+              <span class="env-lane-label">Identity &amp; apps</span>
+              <div class="env-flow">
+                <div class="env-node "><span class="env-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><h3>JumpCloud</h3><p>SSO, MFA, device enrollment, user lifecycle, and policy enforcement.</p></div>
+                <span class="env-link" aria-hidden="true"></span>
+                <div class="env-node "><span class="env-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><h3>Google Workspace</h3><p>Email, groups, shared drives, and security policies.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="env-band reveal-up" style="--delay:0.12s">
+          <span class="env-band-title">IT asset lifecycle</span>
+          <div class="env-steps"><span class="env-step">Procure</span><span class="env-step">Deploy</span><span class="env-step">Inventory</span><span class="env-step">Warranty &amp; repair</span><span class="env-step">Onboard / offboard</span></div>
+        </div>
       </div>
     </section>
 
@@ -283,27 +356,27 @@
           <div class="timeline-dot" aria-hidden="true"></div>
           <div class="timeline-body">
             <span class="timeline-date">June 2025 - Present</span>
-            <h3>Information Technology Administrator</h3>
-            <p class="timeline-sub">LMDmax Corp · Jaipur</p>
-            <p>Managing IT operations for 550+ employees across multiple locations, covering user support, system administration, onboarding, offboarding, vendors, assets, and security initiatives as a single-member IT team.</p>
+            <h3>IT Administrator</h3>
+            <p class="timeline-sub">LMDmax Corp · Jaipur, Rajasthan</p>
+            <ul class="timeline-list"><li>Primary IT administrator for end-to-end infrastructure and operations, supporting 450+ employees.</li><li>Administer JumpCloud IAM: SSO, MFA, device enrollment, user lifecycle, endpoint security, and policy enforcement.</li><li>Manage Google Workspace for 450+ users, including provisioning, access control, groups, shared drives, and email.</li><li>Executed the Zoho Mail to Google Workspace migration with secure data transfer and minimal downtime.</li><li>Configure Fortinet FortiGate 80F and 120G firewalls: policies, VPN, NAT, and network security controls.</li><li>Run enterprise LAN infrastructure: structured cabling, TCP/IP, DHCP, DNS, VLANs, and switching.</li><li>Own the IT asset lifecycle, from procurement and deployment to warranty tracking, repairs, and onboarding/offboarding.</li><li>Support ISO/IEC 27001 compliance with documentation, security controls, asset registers, and audit evidence.</li></ul>
           </div>
         </article>
         <article class="timeline-item reveal-up" style="--delay:0.1s">
           <div class="timeline-dot" aria-hidden="true"></div>
           <div class="timeline-body">
             <span class="timeline-date">January 2025 - March 2025</span>
-            <h3>Information Technology Support Engineer</h3>
+            <h3>IT Support Engineer</h3>
             <p class="timeline-sub">Jio Platforms Limited (JPL) · Jaipur, Rajasthan, India</p>
-            <p>Supported networking, Windows Server, computer hardware, Microsoft Office tools, and day-to-day technical troubleshooting with a strong focus on communication and reliability.</p>
+            <p>Supported networking, computer hardware, and Windows environments, including Windows Server. Applied basic CCNA knowledge and Microsoft Office tools (Excel, Outlook) with a strong focus on clear communication.</p>
           </div>
         </article>
         <article class="timeline-item reveal-up" style="--delay:0.2s">
           <div class="timeline-dot" aria-hidden="true"></div>
           <div class="timeline-body">
             <span class="timeline-date">November 2024 - December 2024</span>
-            <h3>Information Technology Support Engineer</h3>
+            <h3>IT Support Engineer</h3>
             <p class="timeline-sub">IndiGo (InterGlobe Aviation Ltd) · Jaipur, Rajasthan, India</p>
-            <p>Handled networking support, Windows operating systems, and computer hardware troubleshooting in a fast-moving operational environment.</p>
+            <p>Handled networking support, troubleshooting, and computer hardware issues in a fast-moving operational environment, using basic CCNA knowledge and hands-on Windows experience.</p>
           </div>
         </article>
       </div>
@@ -319,7 +392,7 @@
         <article class="timeline-item reveal-up" style="--delay:0s">
           <div class="timeline-dot" aria-hidden="true"></div>
           <div class="timeline-body">
-            <span class="timeline-date">August 2024 - May 2027</span>
+            <span class="timeline-date">August 2024 - Present</span>
             <h3>Bachelor of Computer Applications</h3>
             <p class="timeline-sub">Shridhar University, Pilani · Computer Science</p>
             <p>Pursuing a BCA focused on computer science with continued interest in system administration, networking, and security operations.</p>
@@ -329,7 +402,7 @@
           <div class="timeline-dot" aria-hidden="true"></div>
           <div class="timeline-body">
             <span class="timeline-date">November 2023 - October 2024</span>
-            <h3>DevOps Enthusiast</h3>
+            <h3>DevOps Expert</h3>
             <p class="timeline-sub">IANT (Institute of Advance Network Technology)</p>
             <p>Completed training that strengthened practical understanding of infrastructure workflows and modern operational tooling.</p>
           </div>
@@ -354,43 +427,67 @@
       </div>
       <div class="certs-grid">
 
-        <div class="cert-card reveal-up" style="--delay:0s">
-          <div class="cert-badge cert-badge-thm" aria-label="CHNA badge">CHNA</div>
+        <div class="cert-card reveal-up" style="--delay:0.0s">
+          <div class="cert-badge cert-badge-thm" aria-hidden="true">DO</div>
           <div class="cert-body">
-            <h3>CHNA</h3>
-            <p class="cert-issuer">IANT · System Engineering</p>
-            <p class="cert-desc">Computer Hardware and Networking Administrator training focused on core infrastructure and troubleshooting skills.</p>
-            <div class="cert-status completed">Completed</div>
+            <h3>Star Certified DevOps Expert</h3>
+            <p class="cert-issuer">Technical certification</p>
+          </div>
+        </div>
+
+        <div class="cert-card reveal-up" style="--delay:0.08s">
+          <div class="cert-badge cert-badge-owasp" aria-hidden="true">CC</div>
+          <div class="cert-body">
+            <h3>Star Cloud Computing</h3>
+            <p class="cert-issuer">Technical certification</p>
+          </div>
+        </div>
+
+        <div class="cert-card reveal-up" style="--delay:0.05s">
+          <div class="cert-badge cert-badge-google" aria-hidden="true">EH</div>
+          <div class="cert-body">
+            <h3>Ethical Hacking Expert</h3>
+            <p class="cert-issuer">Technical certification</p>
+          </div>
+        </div>
+
+        <div class="cert-card reveal-up" style="--delay:0.13s">
+          <div class="cert-badge cert-badge-ceh" aria-hidden="true">IT</div>
+          <div class="cert-body">
+            <h3>IT - Essential</h3>
+            <p class="cert-issuer">Technical certification</p>
           </div>
         </div>
 
         <div class="cert-card reveal-up" style="--delay:0.1s">
-          <div class="cert-badge cert-badge-owasp" aria-label="Ethical Hacker Expert badge">EH</div>
+          <div class="cert-badge cert-badge-thm" aria-hidden="true">SC</div>
           <div class="cert-body">
-            <h3>Ethical Hacker Expert</h3>
-            <p class="cert-issuer">Listed on LinkedIn profile</p>
-            <p class="cert-desc">Security-focused learning that complements hands-on IT operations and broader cybersecurity fundamentals.</p>
-            <div class="cert-status completed">Completed</div>
+            <h3>SCSU (Star Cyber Secure User)</h3>
+            <p class="cert-issuer">Technical certification</p>
           </div>
         </div>
 
-        <div class="cert-card reveal-up" style="--delay:0.2s">
-          <div class="cert-badge cert-badge-google" aria-label="Google badge">G</div>
+        <div class="cert-card reveal-up" style="--delay:0.18s">
+          <div class="cert-badge cert-badge-owasp" aria-hidden="true">EC</div>
           <div class="cert-body">
-            <h3>Cloud Computing</h3>
-            <p class="cert-issuer">Listed on LinkedIn profile</p>
-            <p class="cert-desc">Cloud-oriented learning that supports modern identity, productivity, and infrastructure administration.</p>
-            <div class="cert-status completed">Completed</div>
+            <h3>Effective Communication</h3>
+            <p class="cert-issuer">Professional skills</p>
           </div>
         </div>
 
-        <div class="cert-card reveal-up" style="--delay:0.3s">
-          <div class="cert-badge cert-badge-ceh" aria-label="Star Cyber Security User badge">SC</div>
+        <div class="cert-card reveal-up" style="--delay:0.15s">
+          <div class="cert-badge cert-badge-google" aria-hidden="true">PM</div>
           <div class="cert-body">
-            <h3>Star Cyber Security User</h3>
-            <p class="cert-issuer">Listed on LinkedIn profile</p>
-            <p class="cert-desc">Security learning that reinforces safer operational practices and awareness in day-to-day IT environments.</p>
-            <div class="cert-status completed">Completed</div>
+            <h3>Project Management</h3>
+            <p class="cert-issuer">Professional skills</p>
+          </div>
+        </div>
+
+        <div class="cert-card reveal-up" style="--delay:0.23s">
+          <div class="cert-badge cert-badge-ceh" aria-hidden="true">TM</div>
+          <div class="cert-body">
+            <h3>Time Management</h3>
+            <p class="cert-issuer">Professional skills</p>
           </div>
         </div>
 
@@ -407,53 +504,99 @@
         <div class="skills-block reveal-up" style="--delay:0s">
           <div class="skills-block-head">
             <h3 class="skills-subhead">Technical Skills</h3>
-            <p class="skills-subtext">Core platforms, infrastructure, and security operations tools I use in day-to-day IT work.</p>
+            <p class="skills-subtext">Platforms and infrastructure I work with, rated by how I have used them, not by a score.</p>
           </div>
+          <p class="level-legend"><b>Core</b> used in my current role · <b>Working</b> used in earlier roles · <b>Basic</b> foundational</p>
           <div class="skills-grid">
             <div class="skill-chip reveal-up" style="--delay:0.02s">
-              <span class="skill-icon" aria-hidden="true">☁️</span>
-              <span class="skill-name">JumpCloud</span>
-              <div class="skill-bar"><div class="skill-fill" style="--pct:90%"></div></div>
+              <span class="skill-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></span>
+              <span class="skill-name" data-short="JumpCloud">JumpCloud</span>
+              <div class="skill-meta"><div class="skill-level" data-level="3" aria-hidden="true"><i></i><i></i><i></i></div><span class="skill-level-text">Core</span></div>
             </div>
             <div class="skill-chip reveal-up" style="--delay:0.05s">
-              <span class="skill-icon" aria-hidden="true">🔷</span>
-              <span class="skill-name">Microsoft Azure</span>
-              <div class="skill-bar"><div class="skill-fill" style="--pct:85%"></div></div>
+              <span class="skill-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 10 5-10 5L2 7z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg></span>
+              <span class="skill-name" data-short="AWS">AWS (Basic)</span>
+              <div class="skill-meta"><div class="skill-level" data-level="1" aria-hidden="true"><i></i><i></i><i></i></div><span class="skill-level-text">Basic</span></div>
             </div>
             <div class="skill-chip reveal-up" style="--delay:0.08s">
-              <span class="skill-icon" aria-hidden="true">🛡️</span>
-              <span class="skill-name">ISO 27001 Compliance</span>
-              <div class="skill-bar"><div class="skill-fill" style="--pct:80%"></div></div>
+              <span class="skill-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
+              <span class="skill-name" data-short="ISO 27001">ISO 27001 Compliance</span>
+              <div class="skill-meta"><div class="skill-level" data-level="3" aria-hidden="true"><i></i><i></i><i></i></div><span class="skill-level-text">Core</span></div>
             </div>
             <div class="skill-chip reveal-up" style="--delay:0.11s">
-              <span class="skill-icon" aria-hidden="true">📨</span>
-              <span class="skill-name">Google Workspace Admin</span>
-              <div class="skill-bar"><div class="skill-fill" style="--pct:78%"></div></div>
+              <span class="skill-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
+              <span class="skill-name" data-short="Workspace">Google Workspace Admin</span>
+              <div class="skill-meta"><div class="skill-level" data-level="3" aria-hidden="true"><i></i><i></i><i></i></div><span class="skill-level-text">Core</span></div>
             </div>
             <div class="skill-chip reveal-up" style="--delay:0.14s">
-              <span class="skill-icon" aria-hidden="true">🔥</span>
-              <span class="skill-name">Fortinet Firewall</span>
-              <div class="skill-bar"><div class="skill-fill" style="--pct:75%"></div></div>
+              <span class="skill-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+              <span class="skill-name" data-short="Fortinet">Fortinet Firewall</span>
+              <div class="skill-meta"><div class="skill-level" data-level="3" aria-hidden="true"><i></i><i></i><i></i></div><span class="skill-level-text">Core</span></div>
             </div>
             <div class="skill-chip reveal-up" style="--delay:0.17s">
-              <span class="skill-icon" aria-hidden="true">🪟</span>
-              <span class="skill-name">Windows Server</span>
-              <div class="skill-bar"><div class="skill-fill" style="--pct:80%"></div></div>
+              <span class="skill-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="8" rx="2"/><rect x="2" y="13" width="20" height="8" rx="2"/><path d="M6 7h.01M6 17h.01"/></svg></span>
+              <span class="skill-name" data-short="Win Server">Windows Server</span>
+              <div class="skill-meta"><div class="skill-level" data-level="2" aria-hidden="true"><i></i><i></i><i></i></div><span class="skill-level-text">Working</span></div>
             </div>
             <div class="skill-chip reveal-up" style="--delay:0.2s">
-              <span class="skill-icon" aria-hidden="true">📡</span>
-              <span class="skill-name">Network Administration</span>
-              <div class="skill-bar"><div class="skill-fill" style="--pct:88%"></div></div>
+              <span class="skill-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="2" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="16" y="16" width="6" height="6" rx="1"/><path d="M12 8v4M5 16v-4h14v4"/></svg></span>
+              <span class="skill-name" data-short="Network">Network Administration</span>
+              <div class="skill-meta"><div class="skill-level" data-level="3" aria-hidden="true"><i></i><i></i><i></i></div><span class="skill-level-text">Core</span></div>
             </div>
             <div class="skill-chip reveal-up" style="--delay:0.23s">
-              <span class="skill-icon" aria-hidden="true">🧩</span>
-              <span class="skill-name">IT Infrastructure</span>
-              <div class="skill-bar"><div class="skill-fill" style="--pct:82%"></div></div>
+              <span class="skill-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg></span>
+              <span class="skill-name" data-short="Infra">IT Infrastructure</span>
+              <div class="skill-meta"><div class="skill-level" data-level="3" aria-hidden="true"><i></i><i></i><i></i></div><span class="skill-level-text">Core</span></div>
             </div>
             <div class="skill-chip reveal-up" style="--delay:0.26s">
-              <span class="skill-icon" aria-hidden="true">📦</span>
-              <span class="skill-name">IT Asset Management</span>
-              <div class="skill-bar"><div class="skill-fill" style="--pct:76%"></div></div>
+              <span class="skill-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/></svg></span>
+              <span class="skill-name" data-short="Assets">IT Asset Management</span>
+              <div class="skill-meta"><div class="skill-level" data-level="3" aria-hidden="true"><i></i><i></i><i></i></div><span class="skill-level-text">Core</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skills-block reveal-up" style="--delay:0.04s">
+          <div class="skills-block-head">
+            <h3 class="skills-subhead">Full Toolkit</h3>
+            <p class="skills-subtext">Everything I work with, grouped by area. Items marked Basic are foundational knowledge.</p>
+          </div>
+          <div class="toolkit-grid">
+            <div class="toolkit-group reveal-up" style="--delay:0.0s">
+              <h4>Hardware &amp; Support</h4>
+              <div class="tag-row"><span>System Troubleshooting</span><span>PC Assembly</span><span>Hardware Installation</span><span>IT Asset Management</span></div>
+            </div>
+            <div class="toolkit-group reveal-up" style="--delay:0.04s">
+              <h4>Networking</h4>
+              <div class="tag-row"><span>TCP/IP</span><span>Subnetting</span><span>DNS</span><span>DHCP</span><span>VLAN</span><span>LAN/WAN</span><span>Network Security</span><span>CCNA</span><span>FortiGate 80F &amp; 120G</span></div>
+            </div>
+            <div class="toolkit-group reveal-up" style="--delay:0.08s">
+              <h4>Identity &amp; Access</h4>
+              <div class="tag-row"><span>JumpCloud</span><span>IAM</span><span>SSO</span><span>MFA</span><span>User Lifecycle</span><span>Device Enrollment</span><span>Endpoint Management</span></div>
+            </div>
+            <div class="toolkit-group reveal-up" style="--delay:0.12s">
+              <h4>Cloud &amp; Collaboration</h4>
+              <div class="tag-row"><span>Google Workspace Admin</span><span>Google Admin Console</span><span>Zoho Mail Migration</span><span>Google Groups</span><span>Shared Drives</span></div>
+            </div>
+            <div class="toolkit-group reveal-up" style="--delay:0.16s">
+              <h4>IT Operations</h4>
+              <div class="tag-row"><span>Windows 10/11</span><span>Windows Server</span><span>Linux (Ubuntu, Kali)</span><span>Active Directory (Basic)</span><span>Help Desk L1/L2</span><span>Device Deployment</span></div>
+            </div>
+            <div class="toolkit-group reveal-up" style="--delay:0.2s">
+              <h4>Monitoring &amp; Tools</h4>
+              <div class="tag-row"><span>UNIRMS</span><span>WE360</span><span>Git</span></div>
+            </div>
+            <div class="toolkit-group reveal-up" style="--delay:0.24s">
+              <h4>Cloud &amp; DevOps</h4>
+              <div class="tag-row"><span>AWS (Basic)</span><span>Docker (Basic)</span><span>Jenkins (Basic)</span><span>Kubernetes (Basic)</span></div>
+            </div>
+            <div class="toolkit-group reveal-up" style="--delay:0.28s">
+              <h4>Programming</h4>
+              <div class="tag-row"><span>Python</span><span>SQL</span><span>HTML</span><span>CSS</span><span>JavaScript (Basic)</span><span>C (Basic)</span></div>
+            </div>
+            <div class="toolkit-group reveal-up" style="--delay:0.32s">
+              <h4>Compliance &amp; Security</h4>
+              <div class="tag-row"><span>ISO/IEC 27001</span><span>Security Controls</span><span>IT Documentation</span><span>Endpoint Security</span></div>
             </div>
           </div>
         </div>
@@ -463,38 +606,7 @@
             <h3 class="skills-subhead">Soft Skills</h3>
             <p class="skills-subtext">Professional strengths that help me support users, solve issues, and keep operations reliable.</p>
           </div>
-          <div class="soft-skills-grid">
-            <article class="soft-skill-card reveal-up" style="--delay:0.1s">
-              <span class="soft-skill-icon" aria-hidden="true">💬</span>
-              <h4 class="soft-skill-title">Effective Communication</h4>
-              <p class="soft-skill-text">Translate technical issues into clear updates for users, teams, and vendors.</p>
-            </article>
-            <article class="soft-skill-card reveal-up" style="--delay:0.13s">
-              <span class="soft-skill-icon" aria-hidden="true">⏱️</span>
-              <h4 class="soft-skill-title">Time Management</h4>
-              <p class="soft-skill-text">Prioritize urgent tickets while keeping planned work and routine operations on track.</p>
-            </article>
-            <article class="soft-skill-card reveal-up" style="--delay:0.16s">
-              <span class="soft-skill-icon" aria-hidden="true">🧠</span>
-              <h4 class="soft-skill-title">Problem Solving</h4>
-              <p class="soft-skill-text">Investigate issues methodically and focus on fixes that prevent repeat disruptions.</p>
-            </article>
-            <article class="soft-skill-card reveal-up" style="--delay:0.19s">
-              <span class="soft-skill-icon" aria-hidden="true">🤝</span>
-              <h4 class="soft-skill-title">User Support</h4>
-              <p class="soft-skill-text">Support people patiently across different teams, roles, and technical comfort levels.</p>
-            </article>
-            <article class="soft-skill-card reveal-up" style="--delay:0.22s">
-              <span class="soft-skill-icon" aria-hidden="true">🔄</span>
-              <h4 class="soft-skill-title">Adaptability</h4>
-              <p class="soft-skill-text">Switch comfortably between identity, systems, network, vendor, and compliance responsibilities.</p>
-            </article>
-            <article class="soft-skill-card reveal-up" style="--delay:0.25s">
-              <span class="soft-skill-icon" aria-hidden="true">📝</span>
-              <h4 class="soft-skill-title">Documentation</h4>
-              <p class="soft-skill-text">Maintain clear records, SOPs, and notes for smoother handovers and better accountability.</p>
-            </article>
-          </div>
+          <div class="tag-row soft-tags"><span>Problem-solving</span><span>Communication</span><span>Analytical</span><span>Troubleshooting</span><span>Leadership</span><span>Collaboration</span><span>Time Management</span><span>Continuous Learning</span></div>
         </div>
       </div>
     </section>
@@ -539,7 +651,7 @@
           <span class="contact-value">github.com/RijulJain001</span>
         </a>
 
-        <a href="assets/Rijul_Jain_Profile.pdf" class="contact-card reveal-up" id="resume-link" style="--delay:0.3s" download>
+        <a href="assets/Rijul_Jain_Resume.pdf" class="contact-card reveal-up" id="resume-link" style="--delay:0.3s" download>
           <div class="contact-icon" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
           </div>
@@ -551,6 +663,10 @@
     </section>
 
   </main>
+
+  <button class="fx-toggle" id="fx-toggle" type="button" aria-pressed="true" aria-label="Toggle background effects">
+    <span class="fx-dot" aria-hidden="true"></span><span id="fx-label">Effects on</span>
+  </button>
 
   <footer class="site-footer">
     <p>Designed &amp; developed by <strong>Rijul Jain</strong> · <span class="footer-year"></span></p>

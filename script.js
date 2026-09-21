@@ -4,20 +4,20 @@
    RIJUL JAIN PORTFOLIO — script.js  (full rewrite)
    Features:
    1. Page Loader (boot sequence)
-   2. Matrix canvas background
+   2. Effects on/off toggle
    3. Typewriter — hero eyebrow
    4. Terminal card typing animation
    5. Scroll-reveal animations
    6. Skill bar animation on scroll
    7. Active nav highlight on scroll
-   8. Sticky header shadow
+   8. Header shadow, scroll progress bar, timeline fill
    9. Cursor glow follower
    10. Hamburger / mobile menu
    11. Animated stats counters
    12. Project detail modals
    13. Interactive terminal (type real commands)
    14. Copy email to clipboard
-   15. Card 3D tilt
+   15. Card spotlight + 3D tilt
    16. Footer year
    ============================================================== */
 
@@ -26,9 +26,7 @@
 ------------------------------------------------------------------ */
 const LOADER_STEPS = [
   "Loading profile…",
-  "Syncing workspace highlights…",
-  "Checking infrastructure signals…",
-  "Preparing terminal…",
+  "Preparing workspace…",
   "Ready.",
 ];
 
@@ -37,6 +35,12 @@ const LOADER_STEPS = [
   const bar     = document.getElementById("loader-bar");
   const text    = document.getElementById("loader-text");
   if (!loader) return;
+
+  // Only show the boot animation once per browser session
+  try {
+    if (sessionStorage.getItem("rj-loaded")) { loader.classList.add("hidden"); return; }
+    sessionStorage.setItem("rj-loaded", "1");
+  } catch { /* storage unavailable: just show it */ }
 
   let step = 0;
   function tick() {
@@ -48,92 +52,40 @@ const LOADER_STEPS = [
     bar.style.width  = `${pct}%`;
     text.textContent = LOADER_STEPS[step];
     step++;
-    setTimeout(tick, step === LOADER_STEPS.length ? 300 : 280);
+    setTimeout(tick, 170);
   }
-  setTimeout(tick, 180);
+  setTimeout(tick, 80);
 })();
 
 /* ------------------------------------------------------------------
-   2. CANVAS BACKGROUND
+   2. EFFECTS TOGGLE — visitors can switch decorative motion off; the
+      choice is remembered and reduced-motion users start with it off
 ------------------------------------------------------------------ */
-const canvas = document.getElementById("code-background");
-const ctx    = canvas.getContext("2d");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const fxBtn   = document.getElementById("fx-toggle");
+const fxLabel = document.getElementById("fx-label");
+let fxOn = !reduceMotion;
+try {
+  const saved = localStorage.getItem("rj-fx");
+  if (saved) fxOn = saved === "on";
+} catch { /* storage unavailable */ }
 
-const SNIPPETS = [
-  "rijul@itops:~$ whoami",
-  "rijul@itops:~$ az account show",
-  "rijul@itops:~$ jumpcloud users list",
-  "rijul@itops:~$ Get-ComputerInfo",
-  "rijul@itops:~$ netsh advfirewall show allprofiles",
-  "rijul@itops:~$ workspace migration status",
-  "rijul@itops:~$ fortinet policy review",
-  "rijul@itops:~$ onboarding checklist",
-  "[+] 550+ users supported",
-  "[+] identity platform synced",
-  "[+] ISO 27001 controls reviewed",
-  "[+] onboarding process ready",
-  "Google Workspace -> stable",
-  "JumpCloud -> centralized access",
-  "Azure -> account aligned",
-  "Fortinet -> secure edge",
-];
-
-const COLORS = ["#3dffa4", "#2bdcff", "#f7d85a", "#ff4f77", "#3578ff"];
-let columns  = [], W = 0, H = 0, lastFrame = 0;
-
-function resizeCanvas() {
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  W = window.innerWidth; H = window.innerHeight;
-  canvas.width  = Math.floor(W * dpr);
-  canvas.height = Math.floor(H * dpr);
-  canvas.style.width  = `${W}px`;
-  canvas.style.height = `${H}px`;
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  const count = Math.max(18, Math.floor(W / 56));
-  columns = Array.from({ length: count }, (_, i) => ({
-    x: i * (W / count) + Math.random() * 14,
-    y: Math.random() * H,
-    speed:  16 + Math.random() * 54,
-    color:  COLORS[i % COLORS.length],
-    text:   SNIPPETS[i % SNIPPETS.length],
-    offset: Math.floor(Math.random() * 22),
-  }));
+function applyFx() {
+  document.documentElement.dataset.fx = fxOn ? "on" : "off";
+  fxBtn?.setAttribute("aria-pressed", String(fxOn));
+  if (fxLabel) fxLabel.textContent = fxOn ? "Effects on" : "Effects off";
 }
-
-function drawCanvas(ts) {
-  const delta = Math.min((ts - lastFrame) / 1000 || 0.016, 0.05);
-  lastFrame = ts;
-  ctx.fillStyle = "rgba(2, 3, 4, 0.16)";
-  ctx.fillRect(0, 0, W, H);
-  ctx.font = "13px 'JetBrains Mono', Consolas, monospace";
-  ctx.textBaseline = "top";
-  columns.forEach((col, i) => {
-    col.y += col.speed * delta;
-    if (col.y > H + 160) {
-      col.y    = -100 - Math.random() * 200;
-      col.text = SNIPPETS[(i + Math.floor(Math.random() * SNIPPETS.length)) % SNIPPETS.length];
-    }
-    for (let j = 0; j < 9; j++) {
-      const y = col.y - j * 21;
-      if (y < -30 || y > H + 30) continue;
-      const a = Math.max(0, 0.88 - j * 0.11);
-      const f = col.text.slice(0, Math.max(6, col.text.length - j - col.offset));
-      const h = col.color.replace("#", "");
-      ctx.fillStyle = `rgba(${parseInt(h.slice(0,2),16)},${parseInt(h.slice(2,4),16)},${parseInt(h.slice(4,6),16)},${a})`;
-      ctx.fillText(f, col.x, y);
-    }
-  });
-  requestAnimationFrame(drawCanvas);
-}
-
-window.addEventListener("resize", resizeCanvas, { passive: true });
-resizeCanvas();
-requestAnimationFrame(drawCanvas);
+applyFx();
+fxBtn?.addEventListener("click", () => {
+  fxOn = !fxOn;
+  try { localStorage.setItem("rj-fx", fxOn ? "on" : "off"); } catch { /* ignore */ }
+  applyFx();
+});
 
 /* ------------------------------------------------------------------
    3. TYPEWRITER — hero eyebrow
 ------------------------------------------------------------------ */
-const TW_PHRASES = ["whoami", "az account show", "jumpcloud users list", "Get-ComputerInfo"];
+const TW_PHRASES = ["whoami", "get system status", "jumpcloud users list", "Get-ComputerInfo"];
 let twPhrase = 0, twChar = 0, twDeleting = false;
 const twEl = document.getElementById("typewriter");
 
@@ -216,12 +168,33 @@ const navObs = new IntersectionObserver(entries => {
 sections.forEach(s => navObs.observe(s));
 
 /* ------------------------------------------------------------------
-   8. STICKY HEADER SHADOW
+   8. SCROLL EFFECTS — header shadow, progress bar, timeline fill
 ------------------------------------------------------------------ */
-const header = document.getElementById("site-header");
-window.addEventListener("scroll", () => {
+const header         = document.getElementById("site-header");
+const scrollProgress = document.getElementById("scroll-progress");
+const timelines      = document.querySelectorAll(".timeline");
+
+function onScroll() {
+  const max = document.documentElement.scrollHeight - window.innerHeight;
   header.classList.toggle("scrolled", window.scrollY > 20);
+  scrollProgress?.style.setProperty("--p", max > 0 ? (window.scrollY / max).toFixed(4) : "0");
+
+  const mid = window.innerHeight * 0.6;
+  timelines.forEach(tl => {
+    const r = tl.getBoundingClientRect();
+    const fill = Math.min(1, Math.max(0, (mid - r.top) / r.height));
+    tl.style.setProperty("--fill", fill.toFixed(3));
+  });
+}
+
+let scrollTicking = false;
+window.addEventListener("scroll", () => {
+  if (scrollTicking) return;
+  scrollTicking = true;
+  requestAnimationFrame(() => { onScroll(); scrollTicking = false; });
 }, { passive: true });
+window.addEventListener("resize", onScroll, { passive: true });
+onScroll();
 
 /* ------------------------------------------------------------------
    9. CURSOR GLOW
@@ -373,17 +346,16 @@ const COMMANDS = {
   ],
   skills: () => [
     { cls: "t-info", txt: "[+] Technical Skills:" },
-    { cls: "t-out",  txt: "  JumpCloud        ██████████ 90%" },
-    { cls: "t-out",  txt: "  Networking       █████████░ 88%" },
-    { cls: "t-out",  txt: "  Microsoft Azure  ████████░░ 85%" },
-    { cls: "t-out",  txt: "  Windows Server   ████████░░ 80%" },
-    { cls: "t-out",  txt: "  ISO 27001        ███████░░░ 80%" },
+    { cls: "t-out",  txt: "  Core     used in my current role" },
+    { cls: "t-out",  txt: "           JumpCloud · Google Workspace · Fortinet FortiGate" },
+    { cls: "t-out",  txt: "           LAN/WAN networking · IT asset management · ISO/IEC 27001" },
+    { cls: "t-out",  txt: "  Working  Windows Server" },
+    { cls: "t-out",  txt: "  Basic    AWS · Docker · Jenkins · Kubernetes · Active Directory" },
     { cls: "t-out",  txt: "" },
     { cls: "t-info", txt: "[+] Soft Skills:" },
-    { cls: "t-out",  txt: "  Effective Communication" },
-    { cls: "t-out",  txt: "  Time Management" },
-    { cls: "t-out",  txt: "  Problem Solving" },
-    { cls: "t-out",  txt: "  User Support" },
+    { cls: "t-out",  txt: "  Problem-solving · Communication · Analytical" },
+    { cls: "t-out",  txt: "  Troubleshooting · Leadership · Collaboration" },
+    { cls: "t-out",  txt: "  Time Management · Continuous Learning" },
   ],
   projects: () => [
     { cls: "t-info", txt: "[+] Key Initiatives:" },
@@ -397,22 +369,26 @@ const COMMANDS = {
     { cls: "t-out",  txt: "  Email    : jainrijul02@gmail.com" },
     { cls: "t-out",  txt: "  LinkedIn : linkedin.com/in/jainrijul1122" },
     { cls: "t-out",  txt: "  GitHub   : github.com/RijulJain001" },
-    { cls: "t-out",  txt: "  Location : Greater Jaipur Area" },
+    { cls: "t-out",  txt: "  Location : Jaipur, Rajasthan, India" },
   ],
   certs: () => [
     { cls: "t-info", txt: "[+] Certifications:" },
-    { cls: "t-out",  txt: "  [COMPLETED] CHNA" },
-    { cls: "t-out",  txt: "  [COMPLETED] Ethical Hacker Expert" },
-    { cls: "t-out",  txt: "  [COMPLETED] Cloud Computing" },
-    { cls: "t-out",  txt: "  [COMPLETED] Star Cyber Security User" },
+    { cls: "t-out",  txt: "  Effective Communication" },
+    { cls: "t-out",  txt: "  Project Management" },
+    { cls: "t-out",  txt: "  Time Management" },
+    { cls: "t-out",  txt: "  Star Certified DevOps Expert" },
+    { cls: "t-out",  txt: "  Star Cloud Computing" },
+    { cls: "t-out",  txt: "  Ethical Hacking Expert" },
+    { cls: "t-out",  txt: "  IT - Essential" },
+    { cls: "t-out",  txt: "  SCSU (Star Cyber Secure User)" },
   ],
   stack: () => [
     { cls: "t-info", txt: "[+] Core Platforms:" },
     { cls: "t-out",  txt: "  Google Workspace" },
     { cls: "t-out",  txt: "  JumpCloud" },
-    { cls: "t-out",  txt: "  Microsoft Azure" },
-    { cls: "t-out",  txt: "  Fortinet Firewall" },
-    { cls: "t-out",  txt: "  Zoho Apps / We360 / UNIRMS" },
+    { cls: "t-out",  txt: "  Fortinet FortiGate 80F & 120G" },
+    { cls: "t-out",  txt: "  Windows Server / Linux (Ubuntu, Kali)" },
+    { cls: "t-out",  txt: "  UNIRMS / WE360 / Git" },
   ],
   date: () => [{ cls: "t-out", txt: new Date().toString() }],
   clear: () => "clear",
@@ -513,18 +489,31 @@ copyBtn?.addEventListener("click", async () => {
 });
 
 /* ------------------------------------------------------------------
-   15. CARD 3D TILT
+   15. CARD SPOTLIGHT + 3D TILT
 ------------------------------------------------------------------ */
-document.querySelectorAll(".card, .about-card, .cert-card").forEach(card => {
-  card.addEventListener("mousemove", e => {
-    const r = card.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width  - 0.5;
-    const y = (e.clientY - r.top)  / r.height - 0.5;
-    card.style.transform = `perspective(800px) rotateY(${x * 6}deg) rotateX(${-y * 4}deg) translateY(-4px)`;
-  });
-  card.addEventListener("mouseleave", () => { card.style.transform = ""; card.style.transition = "transform 500ms ease"; });
-  card.addEventListener("mouseenter", () => { card.style.transition = "transform 100ms ease"; });
+const SPOT_SELECTOR = ".card, .about-card, .cert-card, .stat-card, .contact-card, .timeline-item, .skill-chip";
+const TILT_SELECTOR = ".card, .about-card, .cert-card";
+const canTilt = !reduceMotion && window.matchMedia("(hover: hover)").matches;
+
+document.querySelectorAll(SPOT_SELECTOR).forEach(el => {
+  el.addEventListener("pointermove", e => {
+    const r = el.getBoundingClientRect();
+    el.style.setProperty("--mx", `${e.clientX - r.left}px`);
+    el.style.setProperty("--my", `${e.clientY - r.top}px`);
+  }, { passive: true });
 });
+
+if (canTilt) {
+  document.querySelectorAll(TILT_SELECTOR).forEach(card => {
+    card.addEventListener("pointermove", e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width  - 0.5;
+      const y = (e.clientY - r.top)  / r.height - 0.5;
+      card.style.transform = `perspective(800px) rotateY(${x * 7}deg) rotateX(${-y * 5}deg) translateY(-6px)`;
+    });
+    card.addEventListener("pointerleave", () => { card.style.transform = ""; });
+  });
+}
 
 /* ------------------------------------------------------------------
    16. FOOTER YEAR
