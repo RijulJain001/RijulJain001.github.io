@@ -65,6 +65,11 @@ body {
   overflow-x: clip;
 }
 
+main {
+  overflow-x: hidden;   /* fallback for older browsers */
+  overflow-x: clip;     /* decorative rings bleed to the screen edge but never widen the page */
+}
+
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 h1, h2, h3, h4, p { overflow-wrap: anywhere; }
@@ -280,8 +285,8 @@ h3 { font-size: 1.22rem; font-weight: 700; }
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  width: 42px; height: 42px;
-  padding: 10px;
+  width: 44px; height: 44px;
+  padding: 11px;
   border: 1px solid var(--line);
   border-radius: 12px;
   background: none;
@@ -317,10 +322,11 @@ h3 { font-size: 1.22rem; font-weight: 700; }
   border-bottom: 1px solid var(--line);
   transition: max-height 380ms var(--ease), padding 380ms ease;
 }
-.mobile-menu.open { max-height: 460px; padding: 20px; }
+.mobile-menu.open { max-height: 560px; padding: 20px; }
 .mobile-menu nav { display: flex; flex-direction: column; gap: 6px; }
 .mobile-link {
   display: block;
+  min-height: 48px;
   padding: 13px 16px;
   border-radius: 12px;
   color: var(--muted);
@@ -328,6 +334,17 @@ h3 { font-size: 1.22rem; font-weight: 700; }
   transition: background var(--transition), color var(--transition);
 }
 .mobile-link:hover, .mobile-link.active { background: rgba(139, 92, 246, 0.16); color: #fff; }
+.fx-menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  border: 0;
+  background: none;
+  font: 600 1rem 'Inter', sans-serif;
+  text-align: left;
+  cursor: pointer;
+}
 
 /* ============================================================
    LAYOUT HELPERS & SCROLL REVEAL
@@ -537,7 +554,7 @@ h3 { font-size: 1.22rem; font-weight: 700; }
 }
 .button.ghost { color: var(--violet-soft); font-size: 0.9rem; }
 
-.btn-sm { min-height: 38px; padding: 8px 16px; font-size: 0.86rem; }
+.btn-sm { min-height: 42px; padding: 8px 18px; font-size: 0.88rem; }
 
 /* ============================================================
    PROFILE PANEL
@@ -821,7 +838,8 @@ h3 { font-size: 1.22rem; font-weight: 700; }
   gap: 8px;
   width: fit-content;
   margin-top: 22px;
-  padding: 9px 18px;
+  min-height: 44px;
+  padding: 10px 20px;
   border: 1px solid var(--line-strong);
   border-radius: 999px;
   background: rgba(139, 92, 246, 0.1);
@@ -923,7 +941,7 @@ h3 { font-size: 1.22rem; font-weight: 700; }
 .level-legend { margin: 0 0 18px; color: var(--muted); font: 0.84rem/1.6 var(--font-mono); }
 .level-legend b { color: var(--violet-soft); }
 
-.skills-block .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; }
+.skills-block .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
 .skill-chip { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 22px 18px 20px; cursor: default; }
 .skill-icon {
   display: grid;
@@ -936,7 +954,7 @@ h3 { font-size: 1.22rem; font-weight: 700; }
 }
 .skill-icon svg { width: 22px; height: 22px; }
 .skill-name { position: relative; color: #efeaff; font: 700 0.86rem var(--font-mono); letter-spacing: 0.02em; }
-.skill-meta { position: relative; display: flex; align-items: center; gap: 12px; width: 100%; }
+.skill-meta { position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; width: 100%; }
 .skill-level { display: flex; gap: 5px; }
 .skill-level i {
   position: relative;
@@ -1303,14 +1321,32 @@ h3 { font-size: 1.22rem; font-weight: 700; }
   .nav-link { padding: 8px 11px; }
 }
 
-@media (max-width: 1100px) {
-  .float-chip.c1, .float-chip.c3 { right: -8px; }
-  .float-chip.c2, .float-chip.c4 { left: -8px; }
+@media (max-width: 1240px) {
+  .float-chip.c1, .float-chip.c3 { right: -10px; }
+  .float-chip.c2, .float-chip.c4 { left: -10px; }
 }
 
 @media (max-width: 1020px) {
   .env-body { grid-template-columns: 1fr; gap: 20px; }
   .env-users::after { display: none; }
+  .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .toolkit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 920px) {
+  .site-nav, .header-actions, .fx-toggle { display: none; }
+  .hamburger { display: flex; }
+
+  .hero { grid-template-columns: 1fr; min-height: auto; gap: 40px; padding-top: 60px; }
+  .hero-deco { right: -30%; top: 30%; opacity: 0.4; }
+  .profile-col { justify-self: center; width: min(100%, 400px); }
+
+  .section-grid, .certs-grid { grid-template-columns: 1fr; }
+  .skills-block { padding: 24px 22px; }
+}
+
+@media (max-width: 720px) {
   .env-flow { flex-direction: column; }
   .env-link {
     flex: 0 0 34px;
@@ -1326,21 +1362,6 @@ h3 { font-size: 1.22rem; font-weight: 700; }
     border-top: 8px solid var(--violet-soft);
     border-bottom: 0;
   }
-  .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .toolkit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
-@media (max-width: 920px) {
-  .site-nav, .header-actions { display: none; }
-  .hamburger { display: flex; }
-
-  .hero { grid-template-columns: 1fr; min-height: auto; gap: 40px; padding-top: 60px; }
-  .hero-deco { right: -30%; top: 30%; opacity: 0.4; }
-  .profile-col { justify-self: center; width: min(100%, 400px); }
-
-  .section-grid, .certs-grid { grid-template-columns: 1fr; }
-  .skills-block { padding: 24px 22px; }
 }
 
 @media (max-width: 640px) {
@@ -1351,25 +1372,19 @@ h3 { font-size: 1.22rem; font-weight: 700; }
 
   .cards-grid, .contact-grid, .toolkit-grid { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .skills-block .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   .hero { padding: 44px 0 48px; }
   .hero-actions { flex-direction: column; align-items: stretch; }
   .button { width: 100%; }
   .btn-sm { width: auto; }
 
-  .float-chip.c2, .float-chip.c4 { display: none; }
+  .float-chip.c2, .float-chip.c3, .float-chip.c4 { display: none; }
   .float-chip.c1 { right: 6px; top: 26px; }
-  .float-chip.c3 { right: 6px; }
 
   .timeline-item { padding: 22px 20px 22px 54px; }
   .skills-block { padding: 22px 18px; }
   .skill-chip { padding: 18px 14px; }
   .modal-box { padding: 32px 22px; }
-}
-
-@media (max-width: 400px) {
-  .skills-block .skills-grid { grid-template-columns: 1fr; }
 }
 
 /* ============================================================
@@ -1401,11 +1416,12 @@ h3 { font-size: 1.22rem; font-weight: 700; }
 
 .fx-toggle {
   position: fixed;
-  right: 18px; bottom: 18px;
+  right: max(18px, env(safe-area-inset-right)); bottom: max(18px, env(safe-area-inset-bottom));
   z-index: 250;
   display: inline-flex;
   align-items: center;
   gap: 9px;
+  min-height: 40px;
   padding: 9px 16px;
   border: 1px solid var(--line-strong);
   border-radius: 999px;
@@ -1420,7 +1436,12 @@ h3 { font-size: 1.22rem; font-weight: 700; }
 }
 .fx-toggle:hover { color: #fff; border-color: var(--violet); transform: translateY(-2px); }
 .fx-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 10px var(--mint); }
-.fx-toggle[aria-pressed="false"] .fx-dot { background: var(--muted); box-shadow: none; }
+.fx-toggle[aria-pressed="false"] .fx-dot, .fx-menu[aria-pressed="false"] .fx-dot { background: var(--muted); box-shadow: none; }
+
+/* Phones + tablets: the toggle lives in the menu instead (must come after the base rule above) */
+@media (max-width: 920px) {
+  .fx-toggle { display: none; }
+}
 
 /* Effects off: keep the layout, drop the motion */
 [data-fx="off"] *, [data-fx="off"] *::before, [data-fx="off"] *::after { animation: none !important; }
