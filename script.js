@@ -62,8 +62,7 @@ const LOADER_STEPS = [
       choice is remembered and reduced-motion users start with it off
 ------------------------------------------------------------------ */
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const fxBtn   = document.getElementById("fx-toggle");
-const fxLabel = document.getElementById("fx-label");
+const fxBtns  = document.querySelectorAll("[data-fx-toggle]");
 let fxOn = !reduceMotion;
 try {
   const saved = localStorage.getItem("rj-fx");
@@ -72,15 +71,18 @@ try {
 
 function applyFx() {
   document.documentElement.dataset.fx = fxOn ? "on" : "off";
-  fxBtn?.setAttribute("aria-pressed", String(fxOn));
-  if (fxLabel) fxLabel.textContent = fxOn ? "Effects on" : "Effects off";
+  fxBtns.forEach(btn => {
+    btn.setAttribute("aria-pressed", String(fxOn));
+    const label = btn.querySelector(".fx-label");
+    if (label) label.textContent = fxOn ? "Effects on" : "Effects off";
+  });
 }
 applyFx();
-fxBtn?.addEventListener("click", () => {
+fxBtns.forEach(btn => btn.addEventListener("click", () => {
   fxOn = !fxOn;
   try { localStorage.setItem("rj-fx", fxOn ? "on" : "off"); } catch { /* ignore */ }
   applyFx();
-});
+}));
 
 /* ------------------------------------------------------------------
    3. TYPEWRITER — hero eyebrow

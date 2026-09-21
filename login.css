@@ -30,7 +30,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow-x: hidden;   /* the card can be taller than a phone screen, so the page must scroll */
   position: relative;
 }
 
@@ -88,7 +88,7 @@ body::before {
    BACK LINK
    ============================================================ */
 .back-link {
-  position: fixed;
+  position: absolute;   /* scrolls away with the page so it never covers the card */
   top: 24px; left: 28px;
   z-index: 500;
   display: inline-flex;
@@ -572,6 +572,14 @@ body::before {
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+@media (max-height: 720px) {
+  .portal-wrap { padding-top: 76px; padding-bottom: 24px; }
+  .portal-body { padding: 24px 24px 22px; gap: 18px; }
+  .logo-wrap, .logo-ring { width: 68px; height: 68px; }
+  .logo-ring-inner { width: 50px; height: 50px; }
+  .id-box { padding: 12px 14px; }
+}
+
 @media (max-width: 480px) {
   .portal-body { padding: 28px 20px 26px; gap: 20px; }
   .access-grid { grid-template-columns: 1fr; }
