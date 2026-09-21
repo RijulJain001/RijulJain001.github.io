@@ -196,15 +196,23 @@ const navLinks    = document.querySelectorAll(".nav-link");
 const mobileLinks = document.querySelectorAll(".mobile-link");
 const sections    = document.querySelectorAll("main section[id]");
 
+const sectionRatios = new Map();
 const navObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if (e.isIntersecting) {
-      [...navLinks, ...mobileLinks].forEach(a => {
-        a.classList.toggle("active", a.getAttribute("href") === `#${e.target.id}`);
-      });
-    }
+    sectionRatios.set(e.target.id, e.isIntersecting ? e.intersectionRatio : 0);
   });
-}, { threshold: 0.35 });
+
+  let activeId = null, maxRatio = 0;
+  sectionRatios.forEach((ratio, id) => {
+    if (ratio > maxRatio) { maxRatio = ratio; activeId = id; }
+  });
+
+  if (activeId) {
+    [...navLinks, ...mobileLinks].forEach(a => {
+      a.classList.toggle("active", a.getAttribute("href") === `#${activeId}`);
+    });
+  }
+}, { threshold: [0, 0.1, 0.25, 0.35, 0.5, 0.75, 1] });
 sections.forEach(s => navObs.observe(s));
 
 /* ------------------------------------------------------------------
