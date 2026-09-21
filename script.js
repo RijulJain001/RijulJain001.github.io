@@ -202,13 +202,25 @@ onScroll();
    9. CURSOR GLOW
 ------------------------------------------------------------------ */
 const cursorGlow = document.getElementById("cursor-glow");
-let mx = -999, my = -999, cx = -999, cy = -999;
-window.addEventListener("mousemove", e => { mx = e.clientX; my = e.clientY; }, { passive: true });
-(function animCursor() {
-  cx += (mx - cx) * 0.08; cy += (my - cy) * 0.08;
-  if (cursorGlow) cursorGlow.style.transform = `translate(${cx - 190}px, ${cy - 190}px)`;
-  requestAnimationFrame(animCursor);
-})();
+const hasMouse   = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+let mx = 0, my = 0, cx = 0, cy = 0, glowRaf = 0, glowSeen = false;
+
+// Only animate while the pointer is actually moving, and never on touch devices
+function animCursor() {
+  cx += (mx - cx) * 0.14;
+  cy += (my - cy) * 0.14;
+  cursorGlow.style.transform = `translate3d(${cx - 190}px, ${cy - 190}px, 0)`;
+  glowRaf = (Math.abs(mx - cx) > 0.5 || Math.abs(my - cy) > 0.5) ? requestAnimationFrame(animCursor) : 0;
+}
+if (cursorGlow && hasMouse) {
+  window.addEventListener("mousemove", e => {
+    mx = e.clientX; my = e.clientY;
+    if (!glowSeen) { cx = mx; cy = my; glowSeen = true; cursorGlow.style.opacity = "1"; }
+    if (!glowRaf) glowRaf = requestAnimationFrame(animCursor);
+  }, { passive: true });
+} else if (cursorGlow) {
+  cursorGlow.style.display = "none";
+}
 
 /* ------------------------------------------------------------------
    10. HAMBURGER MENU
@@ -497,25 +509,36 @@ const SPOT_SELECTOR = ".card, .about-card, .cert-card, .stat-card, .contact-card
 const TILT_SELECTOR = ".card, .about-card, .cert-card";
 const canTilt = !reduceMotion && window.matchMedia("(hover: hover)").matches;
 
+// One pointer handler per card, applied at most once per frame
+const TILT_SET = new Set(document.querySelectorAll(TILT_SELECTOR));
 document.querySelectorAll(SPOT_SELECTOR).forEach(el => {
-  el.addEventListener("pointermove", e => {
-    const r = el.getBoundingClientRect();
-    el.style.setProperty("--mx", `${e.clientX - r.left}px`);
-    el.style.setProperty("--my", `${e.clientY - r.top}px`);
-  }, { passive: true });
-});
+  const tilt = canTilt && TILT_SET.has(el);
+  let raf = 0, px = 0, py = 0;
 
-if (canTilt) {
-  document.querySelectorAll(TILT_SELECTOR).forEach(card => {
-    card.addEventListener("pointermove", e => {
-      const r = card.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width  - 0.5;
-      const y = (e.clientY - r.top)  / r.height - 0.5;
-      card.style.transform = `perspective(800px) rotateY(${x * 7}deg) rotateX(${-y * 5}deg) translateY(-6px)`;
+  const apply = () => {
+    raf = 0;
+    const r = el.getBoundingClientRect();
+    el.style.setProperty("--mx", `${px - r.left}px`);
+    el.style.setProperty("--my", `${py - r.top}px`);
+    if (tilt) {
+      const x = (px - r.left) / r.width  - 0.5;
+      const y = (py - r.top)  / r.height - 0.5;
+      el.style.transform = `perspective(800px) rotateY(${x * 7}deg) rotateX(${-y * 5}deg) translateY(-6px)`;
+    }
+  };
+
+  el.addEventListener("pointermove", e => {
+    px = e.clientX; py = e.clientY;
+    if (!raf) raf = requestAnimationFrame(apply);
+  }, { passive: true });
+
+  if (tilt) {
+    el.addEventListener("pointerleave", () => {
+      if (raf) { cancelAnimationFrame(raf); raf = 0; }
+      el.style.transform = "";
     });
-    card.addEventListener("pointerleave", () => { card.style.transform = ""; });
-  });
-}
+  }
+});
 
 /* ------------------------------------------------------------------
    16. FOOTER YEAR

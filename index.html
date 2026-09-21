@@ -113,22 +113,22 @@
     <!-- ===================== HERO ===================== -->
     <section id="home" class="hero section-shell">
       <div class="hero-deco" aria-hidden="true">
-        <svg viewBox="0 0 600 600" fill="none">
+        <svg class="deco-static" viewBox="0 0 600 600" fill="none">
           <defs>
             <linearGradient id="decoGrad" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0" stop-color="#8b5cf6"/><stop offset="0.55" stop-color="#c4b5fd"/><stop offset="1" stop-color="#fbbf24"/>
             </linearGradient>
           </defs>
           <circle cx="300" cy="300" r="290" stroke="url(#decoGrad)" stroke-opacity="0.35" stroke-width="1.5"/>
-          <g class="deco-spin">
-            <circle cx="300" cy="300" r="230" stroke="url(#decoGrad)" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 14" stroke-linecap="round"/>
-            <circle cx="300" cy="70" r="8" fill="#c4b5fd"/><circle cx="530" cy="300" r="5" fill="#fbbf24"/>
-          </g>
-          <g class="deco-spin-rev">
-            <circle cx="300" cy="300" r="165" stroke="#a78bfa" stroke-opacity="0.35" stroke-width="1.5"/>
-            <circle cx="135" cy="300" r="7" fill="#c4b5fd"/><circle cx="300" cy="465" r="5" fill="#8b5cf6"/>
-          </g>
           <circle cx="300" cy="300" r="100" stroke="url(#decoGrad)" stroke-opacity="0.25" stroke-dasharray="2 10"/>
+        </svg>
+        <svg class="deco-spin" viewBox="0 0 600 600" fill="none">
+          <circle cx="300" cy="300" r="230" stroke="url(#decoGrad)" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 14" stroke-linecap="round"/>
+          <circle cx="300" cy="70" r="8" fill="#c4b5fd"/><circle cx="530" cy="300" r="5" fill="#fbbf24"/>
+        </svg>
+        <svg class="deco-spin-rev" viewBox="0 0 600 600" fill="none">
+          <circle cx="300" cy="300" r="165" stroke="#a78bfa" stroke-opacity="0.35" stroke-width="1.5"/>
+          <circle cx="135" cy="300" r="7" fill="#c4b5fd"/><circle cx="300" cy="465" r="5" fill="#8b5cf6"/>
         </svg>
       </div>
       <div class="hero-copy">
@@ -154,6 +154,7 @@
 
       <div class="profile-col reveal-up" style="--delay:0.15s">
       <div class="profile-panel">
+        <span class="profile-ring" aria-hidden="true"></span>
         <span class="float-chip c1"><i></i>ISO 27001</span>
         <span class="float-chip c2"><i></i>Workspace</span>
         <span class="float-chip c3"><i></i>JumpCloud</span>
