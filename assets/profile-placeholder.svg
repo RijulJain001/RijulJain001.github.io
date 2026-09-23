@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="RJ monogram">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#1a1145"/><stop offset="0.55" stop-color="#0d0a26"/><stop offset="1" stop-color="#150f3a"/>
+      <stop offset="0" stop-color="#0F2854"/><stop offset="0.55" stop-color="#081527"/><stop offset="1" stop-color="#12325e"/>
     </linearGradient>
     <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#8b5cf6"/><stop offset="0.55" stop-color="#c4b5fd"/><stop offset="1" stop-color="#fbbf24"/>
+      <stop offset="0" stop-color="#1C4D8D"/><stop offset="0.55" stop-color="#4988C4"/><stop offset="1" stop-color="#BDE8F5"/>
     </linearGradient>
     <radialGradient id="glow" cx="0.5" cy="0.42" r="0.55">
-      <stop offset="0" stop-color="#8b5cf6" stop-opacity="0.45"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/>
+      <stop offset="0" stop-color="#1C4D8D" stop-opacity="0.45"/><stop offset="1" stop-color="#1C4D8D" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="800" height="1000" fill="url(#bg)"/>
@@ -15,10 +15,10 @@
   <g fill="none" stroke="url(#ring)">
     <circle cx="400" cy="420" r="330" stroke-opacity="0.22" stroke-width="2"/>
     <circle cx="400" cy="420" r="260" stroke-opacity="0.4" stroke-width="2" stroke-dasharray="6 16" stroke-linecap="round"/>
-    <circle cx="400" cy="420" r="150" fill="#120f2c" stroke-width="6"/>
+    <circle cx="400" cy="420" r="150" fill="#0d1f3f" stroke-width="6"/>
   </g>
-  <circle cx="400" cy="90" r="9" fill="#c4b5fd"/><circle cx="660" cy="420" r="6" fill="#fbbf24"/><circle cx="140" cy="420" r="7" fill="#c4b5fd"/>
+  <circle cx="400" cy="90" r="9" fill="#4988C4"/><circle cx="660" cy="420" r="6" fill="#BDE8F5"/><circle cx="140" cy="420" r="7" fill="#4988C4"/>
   <text x="400" y="472" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="148" font-weight="700" letter-spacing="-4" fill="#ffffff">RJ</text>
   <text x="400" y="800" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="700" fill="#ffffff">Rijul Jain</text>
-  <text x="400" y="852" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" letter-spacing="3" fill="#c4b5fd">IT ADMINISTRATOR · JAIPUR</text>
+  <text x="400" y="852" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" letter-spacing="3" fill="#4988C4">IT ADMINISTRATOR · JAIPUR</text>
 </svg>
