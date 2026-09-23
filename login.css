@@ -3,7 +3,7 @@
    ============================================================ */
 
 :root {
-  --bg:        #050d1a;
+  --bg:        #eef7fb;
   --violet:    #4988C4;
   --amber:     #BDE8F5;
   --mint:      #34d399;
@@ -40,9 +40,9 @@ a { color: inherit; text-decoration: none; }
 /* Aurora blobs */
 .aurora { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
 .aurora span { position: absolute; border-radius: 50%; will-change: transform; }
-.aurora span:nth-child(1) { width: 56vmax; height: 56vmax; left: -16vmax; top: -22vmax; background: radial-gradient(circle, rgba(28, 77, 141,0.5), transparent 66%); animation: drift-a 26s ease-in-out infinite alternate; }
-.aurora span:nth-child(2) { width: 50vmax; height: 50vmax; right: -18vmax; bottom: -20vmax; background: radial-gradient(circle, rgba(73, 136, 196,0.36), transparent 66%); animation: drift-b 32s ease-in-out infinite alternate; }
-.aurora span:nth-child(3) { width: 40vmax; height: 40vmax; left: 30vw; top: 30vh; background: radial-gradient(circle, rgba(15, 40, 84,0.26), transparent 66%); animation: drift-a 40s ease-in-out infinite alternate-reverse; }
+.aurora span:nth-child(1) { width: 56vmax; height: 56vmax; left: -16vmax; top: -22vmax; background: radial-gradient(circle, rgba(28, 77, 141,0.12), transparent 66%); animation: drift-a 26s ease-in-out infinite alternate; }
+.aurora span:nth-child(2) { width: 50vmax; height: 50vmax; right: -18vmax; bottom: -20vmax; background: radial-gradient(circle, rgba(73, 136, 196,0.14), transparent 66%); animation: drift-b 32s ease-in-out infinite alternate; }
+.aurora span:nth-child(3) { width: 40vmax; height: 40vmax; left: 30vw; top: 30vh; background: radial-gradient(circle, rgba(15, 40, 84,0.08), transparent 66%); animation: drift-a 40s ease-in-out infinite alternate-reverse; }
 @keyframes drift-a { to { transform: translate3d(9vw, 8vh, 0) scale(1.14); } }
 @keyframes drift-b { to { transform: translate3d(-10vw, -8vh, 0) scale(0.9); } }
 
@@ -64,9 +64,8 @@ body::before {
   z-index: 1;
   background:
     radial-gradient(ellipse 70% 70% at 50% 50%, rgba(28, 77, 141,0.05), transparent 70%),
-    radial-gradient(circle at 15% 20%, rgba(28, 77, 141,0.12), transparent 32%),
-    radial-gradient(circle at 85% 80%, rgba(73, 136, 196,0.08), transparent 28%),
-    linear-gradient(rgba(5, 13, 26,0.35), rgba(5, 13, 26,0.35));
+    radial-gradient(circle at 15% 20%, rgba(28, 77, 141,0.08), transparent 32%),
+    radial-gradient(circle at 85% 80%, rgba(73, 136, 196,0.06), transparent 28%);
   pointer-events: none;
 }
 
@@ -95,16 +94,16 @@ body::before {
   padding: 10px 16px;
   border: 1px solid var(--line);
   border-radius: 10px;
-  background: rgba(5, 13, 26,0.92);
-  color: var(--muted);
+  background: rgba(255, 255, 255,0.85);
+  color: #1C4D8D;
   font-size: 0.86rem;
   font-weight: 600;
   transition: color var(--t), border-color var(--t), background var(--t), transform var(--t);
 }
 .back-link:hover {
-  color: var(--violet);
+  color: #0F2854;
   border-color: rgba(28, 77, 141,0.38);
-  background: rgba(28, 77, 141,0.06);
+  background: rgba(255, 255, 255,0.96);
   transform: translateX(-3px);
 }
 
