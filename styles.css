@@ -1174,6 +1174,21 @@ h3 { font-size: 1.22rem; font-weight: 700; }
 .site-footer strong { color: var(--text); }
 .footer-tag { color: rgba(28, 77, 141, 0.75); font: 0.84rem var(--font-mono); }
 
+/* Unlisted "secure access portal" link, styled to blend in as another
+   terminal line — findable on purpose, not shouted about. */
+.portal-link {
+  color: rgba(28, 77, 141, 0.4);
+  font: 0.84rem var(--font-mono);
+  text-decoration: none;
+  border-bottom: 1px dashed transparent;
+  transition: color var(--transition), border-color var(--transition);
+}
+.portal-link:hover, .portal-link:focus-visible {
+  color: var(--violet);
+  border-color: var(--line-strong);
+  outline: none;
+}
+
 /* ============================================================
    PAGE LOADER
    ============================================================ */

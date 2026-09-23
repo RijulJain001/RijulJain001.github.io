@@ -382,6 +382,15 @@ const COMMANDS = {
   date: () => [{ cls: "t-out", txt: new Date().toString() }],
   clear: () => "clear",
   exit:  () => "exit",
+  // Unlisted on purpose — not shown in "help".
+  sudo: () => {
+    setTimeout(() => { window.location.href = "login.html"; }, 900);
+    return [
+      { cls: "t-info", txt: "[+] Authenticating..." },
+      { cls: "t-warn", txt: "Access granted. Redirecting to secure portal..." },
+    ];
+  },
+  portal: () => COMMANDS.sudo(),
 };
 
 function termPrint(lines) {
