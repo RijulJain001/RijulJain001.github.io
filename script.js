@@ -11,14 +11,13 @@
    6. Skill bar animation on scroll
    7. Active nav highlight on scroll
    8. Header shadow, scroll progress bar, timeline fill
-   9. Cursor glow follower
-   10. Hamburger / mobile menu
-   11. Animated stats counters
-   12. Project detail modals
-   13. Interactive terminal (type real commands)
-   14. Copy email to clipboard
-   15. Card spotlight + 3D tilt
-   16. Footer year
+   9. Hamburger / mobile menu
+   10. Animated stats counters
+   11. Project detail modals
+   12. Interactive terminal (type real commands)
+   13. Copy email to clipboard
+   14. Card spotlight + 3D tilt
+   15. Footer year
    ============================================================== */
 
 /* ------------------------------------------------------------------
@@ -199,31 +198,7 @@ window.addEventListener("resize", onScroll, { passive: true });
 onScroll();
 
 /* ------------------------------------------------------------------
-   9. CURSOR GLOW
------------------------------------------------------------------- */
-const cursorGlow = document.getElementById("cursor-glow");
-const hasMouse   = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-let mx = 0, my = 0, cx = 0, cy = 0, glowRaf = 0, glowSeen = false;
-
-// Only animate while the pointer is actually moving, and never on touch devices
-function animCursor() {
-  cx += (mx - cx) * 0.14;
-  cy += (my - cy) * 0.14;
-  cursorGlow.style.transform = `translate3d(${cx - 190}px, ${cy - 190}px, 0)`;
-  glowRaf = (Math.abs(mx - cx) > 0.5 || Math.abs(my - cy) > 0.5) ? requestAnimationFrame(animCursor) : 0;
-}
-if (cursorGlow && hasMouse) {
-  window.addEventListener("mousemove", e => {
-    mx = e.clientX; my = e.clientY;
-    if (!glowSeen) { cx = mx; cy = my; glowSeen = true; cursorGlow.style.opacity = "1"; }
-    if (!glowRaf) glowRaf = requestAnimationFrame(animCursor);
-  }, { passive: true });
-} else if (cursorGlow) {
-  cursorGlow.style.display = "none";
-}
-
-/* ------------------------------------------------------------------
-   10. HAMBURGER MENU
+   9. HAMBURGER MENU
 ------------------------------------------------------------------ */
 const hamburger  = document.getElementById("hamburger-btn");
 const mobileMenu = document.getElementById("mobile-menu");
@@ -252,7 +227,7 @@ document.addEventListener("click", e => {
 }, { passive: true });
 
 /* ------------------------------------------------------------------
-   11. ANIMATED STATS COUNTER
+   10. ANIMATED STATS COUNTER
 ------------------------------------------------------------------ */
 function animateCounter(el, target, duration = 1600) {
   let start = null;
@@ -281,7 +256,7 @@ const statObs   = new IntersectionObserver(entries => {
 statCards.forEach(c => statObs.observe(c));
 
 /* ------------------------------------------------------------------
-   12. PROJECT DETAIL MODALS
+   11. PROJECT DETAIL MODALS
 ------------------------------------------------------------------ */
 const modalOverlay = document.getElementById("modal-overlay");
 const modalContent = document.getElementById("modal-content");
@@ -332,7 +307,7 @@ document.addEventListener("keydown", e => {
 });
 
 /* ------------------------------------------------------------------
-   13. INTERACTIVE TERMINAL
+   12. INTERACTIVE TERMINAL
 ------------------------------------------------------------------ */
 const termOverlay = document.getElementById("terminal-overlay");
 const termOutput  = document.getElementById("terminal-output");
@@ -480,7 +455,7 @@ termClose?.addEventListener("click", closeTerminalModal);
 termOverlay?.addEventListener("click", e => { if (e.target === termOverlay) closeTerminalModal(); });
 
 /* ------------------------------------------------------------------
-   14. COPY EMAIL
+   13. COPY EMAIL
 ------------------------------------------------------------------ */
 const copyBtn   = document.getElementById("copy-email-btn");
 const copyLabel = document.getElementById("copy-label");
@@ -503,7 +478,7 @@ copyBtn?.addEventListener("click", async () => {
 });
 
 /* ------------------------------------------------------------------
-   15. CARD SPOTLIGHT + 3D TILT
+   14. CARD SPOTLIGHT + 3D TILT
 ------------------------------------------------------------------ */
 const SPOT_SELECTOR = ".card, .about-card, .cert-card, .stat-card, .contact-card, .timeline-item, .skill-chip";
 const TILT_SELECTOR = ".card, .about-card, .cert-card";
@@ -541,7 +516,7 @@ document.querySelectorAll(SPOT_SELECTOR).forEach(el => {
 });
 
 /* ------------------------------------------------------------------
-   16. FOOTER YEAR
+   15. FOOTER YEAR
 ------------------------------------------------------------------ */
 const yearEl = document.querySelector(".footer-year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
