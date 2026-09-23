@@ -145,19 +145,6 @@ h3 { font-size: 1.22rem; font-weight: 700; }
   mask-image: radial-gradient(ellipse at 50% 30%, #000 0%, transparent 76%);
 }
 
-.cursor-glow {
-  position: fixed;
-  top: 0; left: 0;
-  width: 380px; height: 380px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(73, 136, 196, 0.14) 0%, rgba(28, 77, 141, 0.04) 40%, transparent 70%);
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0;                       /* revealed by script on the first mouse move */
-  transition: opacity 400ms ease;
-  will-change: transform;
-}
-
 .scroll-progress {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -1595,7 +1582,6 @@ h3 { font-size: 1.22rem; font-weight: 700; }
 
 /* Effects off: keep the layout, drop the motion */
 [data-fx="off"] *, [data-fx="off"] *::before, [data-fx="off"] *::after { animation: none !important; }
-[data-fx="off"] .cursor-glow { display: none; }
 [data-fx="off"] .scroll-progress { box-shadow: none; }
 
 /* ============================================================

@@ -69,18 +69,6 @@ body::before {
   pointer-events: none;
 }
 
-/* Cursor glow */
-.cursor-glow {
-  position: fixed;
-  width: 340px; height: 340px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(28, 77, 141,0.08) 0%, transparent 68%);
-  pointer-events: none;
-  z-index: 9999;
-  will-change: transform;
-  transition: opacity 400ms ease;
-}
-
 /* ============================================================
    BACK LINK
    ============================================================ */

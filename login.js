@@ -6,23 +6,7 @@
 "use strict";
 
 /* ------------------------------------------------------------------
-   2. CURSOR GLOW
------------------------------------------------------------------- */
-const cursorGlow = document.getElementById("cursor-glow");
-let mx = -999, my = -999, cx = -999, cy = -999;
-
-window.addEventListener("mousemove", e => { mx = e.clientX; my = e.clientY; }, { passive: true });
-
-function animCursor() {
-  cx += (mx - cx) * 0.09;
-  cy += (my - cy) * 0.09;
-  if (cursorGlow) cursorGlow.style.transform = `translate(${cx - 170}px, ${cy - 170}px)`;
-  requestAnimationFrame(animCursor);
-}
-animCursor();
-
-/* ------------------------------------------------------------------
-   3. SESSION ID (random hex)
+   2. SESSION ID (random hex)
 ------------------------------------------------------------------ */
 const sessEl = document.getElementById("sess-num");
 if (sessEl) {
@@ -30,7 +14,7 @@ if (sessEl) {
 }
 
 /* ------------------------------------------------------------------
-   4. BOOT SEQUENCE
+   3. BOOT SEQUENCE
 ------------------------------------------------------------------ */
 const BOOT_MESSAGES = [
   { text: "[ OK ] Booting access portal…",            delay: 0   },
@@ -85,7 +69,7 @@ function runBoot() {
 runBoot();
 
 /* ------------------------------------------------------------------
-   5. TYPEWRITER — portal sub-text
+   4. TYPEWRITER — portal sub-text
 ------------------------------------------------------------------ */
 const subEl = document.getElementById("portal-sub-text");
 const SUB_PHRASES = [
@@ -124,7 +108,7 @@ function typeSub() {
 setTimeout(typeSub, 2600);
 
 /* ------------------------------------------------------------------
-   6. BUTTON CLICK — ripple + open link
+   5. BUTTON CLICK — ripple + open link
 ------------------------------------------------------------------ */
 function addRipple(btn, color) {
   btn.addEventListener("click", function(e) {
