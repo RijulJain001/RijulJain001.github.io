@@ -1,128 +1,20 @@
 "use strict";
 
 /* ==============================================================
-   RIJUL JAIN PORTFOLIO — script.js  (full rewrite)
+   RIJUL JAIN PORTFOLIO — script.js
    Features:
-   1. Page Loader (boot sequence)
-   2. Effects on/off toggle
-   3. Typewriter — hero eyebrow
-   4. Terminal card typing animation
-   5. Scroll-reveal animations
-   6. Skill bar animation on scroll
-   7. Active nav highlight on scroll
-   8. Header shadow, scroll progress bar, timeline fill
-   9. Hamburger / mobile menu
-   10. Animated stats counters
-   11. Project detail modals
-   12. Interactive terminal (type real commands)
-   13. Copy email to clipboard
-   14. Card spotlight + 3D tilt
-   15. Footer year
+   Reduced-motion support, profile summary, scroll reveal, skill bars,
+   active navigation, mobile menu, project modals, interactive terminal,
+   email copy, and footer year.
    ============================================================== */
 
-/* ------------------------------------------------------------------
-   1. PAGE LOADER
------------------------------------------------------------------- */
-const LOADER_STEPS = [
-  "Loading profile…",
-  "Preparing workspace…",
-  "Ready.",
-];
-
-(function runLoader() {
-  const loader  = document.getElementById("page-loader");
-  const bar     = document.getElementById("loader-bar");
-  const text    = document.getElementById("loader-text");
-  if (!loader) return;
-
-  // Only show the boot animation once per browser session
-  try {
-    if (sessionStorage.getItem("rj-loaded")) { loader.classList.add("hidden"); return; }
-    sessionStorage.setItem("rj-loaded", "1");
-  } catch { /* storage unavailable: just show it */ }
-
-  let step = 0;
-  function tick() {
-    if (step >= LOADER_STEPS.length) {
-      loader.classList.add("hidden");
-      return;
-    }
-    const pct = Math.round(((step + 1) / LOADER_STEPS.length) * 100);
-    bar.style.width  = `${pct}%`;
-    text.textContent = LOADER_STEPS[step];
-    step++;
-    setTimeout(tick, 170);
-  }
-  setTimeout(tick, 80);
-})();
-
-/* ------------------------------------------------------------------
-   2. EFFECTS TOGGLE — visitors can switch decorative motion off; the
-      choice is remembered and reduced-motion users start with it off
------------------------------------------------------------------- */
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const fxBtns  = document.querySelectorAll("[data-fx-toggle]");
-let fxOn = !reduceMotion;
-try {
-  const saved = localStorage.getItem("rj-fx");
-  if (saved) fxOn = saved === "on";
-} catch { /* storage unavailable */ }
-
-function applyFx() {
-  document.documentElement.dataset.fx = fxOn ? "on" : "off";
-  fxBtns.forEach(btn => {
-    btn.setAttribute("aria-pressed", String(fxOn));
-    const label = btn.querySelector(".fx-label");
-    if (label) label.textContent = fxOn ? "Effects on" : "Effects off";
-  });
-}
-applyFx();
-fxBtns.forEach(btn => btn.addEventListener("click", () => {
-  fxOn = !fxOn;
-  try { localStorage.setItem("rj-fx", fxOn ? "on" : "off"); } catch { /* ignore */ }
-  applyFx();
-}));
 
 /* ------------------------------------------------------------------
-   3. TYPEWRITER — hero eyebrow
------------------------------------------------------------------- */
-const TW_PHRASES = ["whoami", "get system status", "jumpcloud users list", "Get-ComputerInfo"];
-let twPhrase = 0, twChar = 0, twDeleting = false;
-const twEl = document.getElementById("typewriter");
-
-function typewriterTick() {
-  if (!twEl) return;
-  const cur = TW_PHRASES[twPhrase];
-  if (!twDeleting) {
-    twChar++;
-    twEl.textContent = cur.slice(0, twChar);
-    if (twChar >= cur.length) { twDeleting = true; setTimeout(typewriterTick, 1800); return; }
-    setTimeout(typewriterTick, 68);
-  } else {
-    twChar--;
-    twEl.textContent = cur.slice(0, twChar);
-    if (twChar === 0) {
-      twDeleting = false;
-      twPhrase   = (twPhrase + 1) % TW_PHRASES.length;
-      setTimeout(typewriterTick, 420); return;
-    }
-    setTimeout(typewriterTick, 34);
-  }
-}
-setTimeout(typewriterTick, 900);
-
-/* ------------------------------------------------------------------
-   4. TERMINAL CARD TYPING
+   3. TERMINAL CARD TYPING
 ------------------------------------------------------------------ */
 const termCmd = document.getElementById("term-main-cmd");
-if (termCmd) {
-  const CMD = "jumpcloud sync --devices";
-  let ci = 0;
-  function typeCmd() {
-    if (ci <= CMD.length) { termCmd.textContent = CMD.slice(0, ci++); setTimeout(typeCmd, 58); }
-  }
-  setTimeout(typeCmd, 1000);
-}
+if (termCmd) termCmd.textContent = "jumpcloud sync --devices";
 
 /* ------------------------------------------------------------------
    5. SCROLL REVEAL
@@ -227,83 +119,90 @@ document.addEventListener("click", e => {
 }, { passive: true });
 
 /* ------------------------------------------------------------------
-   10. ANIMATED STATS COUNTER
------------------------------------------------------------------- */
-function animateCounter(el, target, duration = 1600) {
-  let start = null;
-  function step(ts) {
-    if (!start) start = ts;
-    const progress = Math.min((ts - start) / duration, 1);
-    const eased    = 1 - Math.pow(1 - progress, 3); // ease-out cubic
-    el.textContent = Math.floor(eased * target);
-    if (progress < 1) requestAnimationFrame(step);
-    else el.textContent = target;
-  }
-  requestAnimationFrame(step);
-}
-
-const statCards = document.querySelectorAll(".stat-card");
-const statObs   = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      const numEl  = e.target.querySelector(".stat-num");
-      const target = parseInt(numEl?.dataset.target || "0", 10);
-      if (numEl && target) animateCounter(numEl, target);
-      statObs.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.4 });
-statCards.forEach(c => statObs.observe(c));
-
-/* ------------------------------------------------------------------
    11. PROJECT DETAIL MODALS
 ------------------------------------------------------------------ */
 const modalOverlay = document.getElementById("modal-overlay");
 const modalContent = document.getElementById("modal-content");
 const modalClose   = document.getElementById("modal-close");
+let modalTrigger = null;
 
-function openModal(card) {
+function openModal(card, trigger) {
   const title   = card.dataset.title   || "";
   const kicker  = card.dataset.kicker  || "";
-  const desc    = card.dataset.desc    || "";
-  const details = card.dataset.details || "";
+  const challenge = card.dataset.challenge || "";
+  const contribution = card.dataset.contribution || "";
+  const outcome = card.dataset.outcome || "";
   const tags    = (card.dataset.tags   || "").split(",").filter(Boolean);
 
-  modalContent.innerHTML = `
-    <p class="modal-kicker">${kicker}</p>
-    <h2 id="modal-title">${title}</h2>
-    <p class="modal-desc">${desc}</p>
-    <p class="modal-details-title">[+] Technical Highlights</p>
-    <div class="modal-details">${details.replace(/\\n/g, "\n")}</div>
-    <div class="modal-tags">${tags.map(t => `<span class="modal-tag">${t.trim()}</span>`).join("")}</div>
-  `;
+  const addText = (parent, tag, className, value) => {
+    const element = document.createElement(tag);
+    element.className = className;
+    element.textContent = value;
+    parent.appendChild(element);
+    return element;
+  };
+  modalContent.replaceChildren();
+  addText(modalContent, "p", "modal-kicker", kicker);
+  const heading = addText(modalContent, "h2", "", title);
+  heading.id = "modal-title";
+  const story = document.createElement("div");
+  story.className = "case-story";
+  [["The challenge", challenge], ["My work", contribution], ["The result", outcome]].forEach(([label, value]) => {
+    const section = document.createElement("section");
+    section.className = "case-detail";
+    addText(section, "h3", "case-detail-title", label);
+    addText(section, "p", "case-detail-copy", value);
+    story.appendChild(section);
+  });
+  modalContent.appendChild(story);
+  const tagRow = document.createElement("div");
+  tagRow.className = "modal-tags";
+  tags.forEach(tag => addText(tagRow, "span", "modal-tag", tag.trim()));
+  modalContent.appendChild(tagRow);
+  modalTrigger = trigger || card.querySelector(".card-cta");
   modalOverlay.classList.add("open");
+  modalOverlay.style.visibility = "visible";
   modalOverlay.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
-  modalClose.focus();
+  modalClose.focus({ preventScroll: true });
 }
 
 function closeModal() {
+  if (!modalOverlay.classList.contains("open")) return;
   modalOverlay.classList.remove("open");
+  modalOverlay.style.visibility = "hidden";
   modalOverlay.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
+  modalTrigger?.focus({ preventScroll: true });
+  modalTrigger = null;
 }
 
 document.querySelectorAll(".card[data-modal='true']").forEach(card => {
   card.addEventListener("click", e => {
-    if (!e.target.closest("a")) openModal(card);
+    if (!e.target.closest("a, .card-cta")) openModal(card, card.querySelector(".card-cta"));
   });
   card.style.cursor = "pointer";
   const cta = card.querySelector(".card-cta");
   if (cta) {
-    cta.addEventListener("click", e => { e.preventDefault(); openModal(card); });
+    cta.addEventListener("click", e => { e.preventDefault(); e.stopPropagation(); openModal(card, cta); });
   }
 });
 
 modalClose?.addEventListener("click", closeModal);
 modalOverlay?.addEventListener("click", e => { if (e.target === modalOverlay) closeModal(); });
 document.addEventListener("keydown", e => {
-  if (e.key === "Escape") { closeModal(); closeTerminalModal(); }
+  if (e.key === "Escape") {
+    if (modalOverlay.classList.contains("open")) closeModal();
+    else if (termOverlay?.classList.contains("open")) closeTerminalModal();
+  }
+  if (e.key === "Tab" && modalOverlay.classList.contains("open")) {
+    const focusable = [...modalOverlay.querySelectorAll("button, a[href], input")].filter(el => el.getClientRects().length);
+    const first = focusable[0], last = focusable.at(-1);
+    if (!first) return;
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    else if (!modalOverlay.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+  }
 });
 
 /* ------------------------------------------------------------------
@@ -349,7 +248,7 @@ const COMMANDS = {
   projects: () => [
     { cls: "t-info", txt: "[+] Key Initiatives:" },
     { cls: "t-out",  txt: "  1. Google Workspace Migration" },
-    { cls: "t-out",  txt: "  2. JumpCloud Rollout" },
+    { cls: "t-out",  txt: "  2. JumpCloud IAM Operations" },
     { cls: "t-out",  txt: "  3. ISO 27001 & Fortinet Operations" },
     { cls: "t-out",  txt: '  → Click the project cards on the page for full details.' },
   ],
@@ -382,15 +281,6 @@ const COMMANDS = {
   date: () => [{ cls: "t-out", txt: new Date().toString() }],
   clear: () => "clear",
   exit:  () => "exit",
-  // Unlisted on purpose — not shown in "help".
-  sudo: () => {
-    setTimeout(() => { window.location.href = "login.html"; }, 900);
-    return [
-      { cls: "t-info", txt: "[+] Authenticating..." },
-      { cls: "t-warn", txt: "Access granted. Redirecting to secure portal..." },
-    ];
-  },
-  portal: () => COMMANDS.sudo(),
 };
 
 function termPrint(lines) {
@@ -483,44 +373,6 @@ copyBtn?.addEventListener("click", async () => {
   } catch {
     copyLabel.textContent = "Failed";
     setTimeout(() => { copyLabel.textContent = "Copy"; }, 1500);
-  }
-});
-
-/* ------------------------------------------------------------------
-   14. CARD SPOTLIGHT + 3D TILT
------------------------------------------------------------------- */
-const SPOT_SELECTOR = ".card, .about-card, .cert-card, .stat-card, .contact-card, .timeline-item, .skill-chip";
-const TILT_SELECTOR = ".card, .about-card, .cert-card";
-const canTilt = !reduceMotion && window.matchMedia("(hover: hover)").matches;
-
-// One pointer handler per card, applied at most once per frame
-const TILT_SET = new Set(document.querySelectorAll(TILT_SELECTOR));
-document.querySelectorAll(SPOT_SELECTOR).forEach(el => {
-  const tilt = canTilt && TILT_SET.has(el);
-  let raf = 0, px = 0, py = 0;
-
-  const apply = () => {
-    raf = 0;
-    const r = el.getBoundingClientRect();
-    el.style.setProperty("--mx", `${px - r.left}px`);
-    el.style.setProperty("--my", `${py - r.top}px`);
-    if (tilt) {
-      const x = (px - r.left) / r.width  - 0.5;
-      const y = (py - r.top)  / r.height - 0.5;
-      el.style.transform = `perspective(800px) rotateY(${x * 7}deg) rotateX(${-y * 5}deg) translateY(-6px)`;
-    }
-  };
-
-  el.addEventListener("pointermove", e => {
-    px = e.clientX; py = e.clientY;
-    if (!raf) raf = requestAnimationFrame(apply);
-  }, { passive: true });
-
-  if (tilt) {
-    el.addEventListener("pointerleave", () => {
-      if (raf) { cancelAnimationFrame(raf); raf = 0; }
-      el.style.transform = "";
-    });
   }
 });
 

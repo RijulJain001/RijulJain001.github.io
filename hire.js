@@ -2,7 +2,6 @@
 
 /* ==============================================================
    RECRUITER PAGE — hire.js
-   - Auto-detects the visit time, time zone, and where the visitor came from
    - Validates the company / recruiter details
    - Turns them into a ready-to-send email (no server needed), or posts to
      an optional form endpoint if one is configured below
@@ -28,65 +27,8 @@
     trap:     $("f-website"),
   };
   const err = { company: $("e-company"), name: $("e-name"), email: $("e-email") };
-  const prepared = $("prepared");
-
   /* ------------------------------------------------------------------
-     1. AUTO-DETECTED DETAILS
-  ------------------------------------------------------------------ */
-  const tz = (() => {
-    try { return Intl.DateTimeFormat().resolvedOptions().timeZone || "Local time"; }
-    catch { return "Local time"; }
-  })();
-
-  function offsetLabel(d) {
-    const m = -d.getTimezoneOffset();
-    const a = Math.abs(m);
-    return `UTC${m >= 0 ? "+" : "-"}${String(Math.floor(a / 60)).padStart(2, "0")}:${String(a % 60).padStart(2, "0")}`;
-  }
-  function fmt(d, opts) {
-    try { return new Intl.DateTimeFormat(undefined, opts).format(d); }
-    catch { return d.toString(); }
-  }
-  const fmtFull  = d => fmt(d, { weekday: "short", day: "numeric", month: "short", year: "numeric", hour: "numeric", minute: "2-digit", second: "2-digit" });
-  const fmtShort = d => fmt(d, { weekday: "short", day: "numeric", month: "short", hour: "numeric", minute: "2-digit" });
-
-  const tidy = s => String(s).replace(/[^\w .\-/]/g, "").trim().slice(0, 40);
-
-  function detectSource() {
-    const p = new URLSearchParams(location.search);
-    const tagged = p.get("utm_source") || p.get("source") || p.get("ref");
-    if (tagged && tidy(tagged)) return tidy(tagged);
-    try {
-      if (document.referrer) {
-        const host = new URL(document.referrer).hostname.replace(/^www\./, "");
-        if (host === location.hostname) return "This portfolio";
-        const known = [["linkedin.", "LinkedIn"], ["google.", "Google"], ["naukri.", "Naukri"], ["indeed.", "Indeed"],
-                       ["glassdoor.", "Glassdoor"], ["github.", "GitHub"], ["outlook.", "Outlook"], ["mail.", "Email"],
-                       ["whatsapp.", "WhatsApp"], ["twitter.", "X / Twitter"], ["t.co", "X / Twitter"]];
-        const hit = known.find(([k]) => host.includes(k));
-        return hit ? hit[1] : host;
-      }
-    } catch { /* malformed referrer */ }
-    return "Direct link";
-  }
-  const source = detectSource();
-  $("d-source").textContent = source;
-  $("d-tz").textContent = `${tz} (${offsetLabel(new Date())})`;
-
-  // The clock keeps running until the form is submitted, then freezes on that moment
-  let frozenAt = null;
-  function tick() {
-    const now = frozenAt || new Date();
-    $("chip-time").textContent = `${fmtShort(now)} · ${tz}`;
-    $("d-time").textContent = fmtFull(now);
-    updatePrepared();
-  }
-  tick();
-  const clock = setInterval(() => { if (!frozenAt && !document.hidden) tick(); }, 1000);
-  window.addEventListener("pagehide", () => clearInterval(clock));
-
-  /* ------------------------------------------------------------------
-     2. PREFILL FROM THE LINK  (hire.html?company=Acme&name=Priya&position=IT%20Admin)
+     1. PREFILL FROM THE LINK  (hire.html?company=Acme&name=Priya&position=IT%20Admin)
   ------------------------------------------------------------------ */
   (() => {
     const p = new URLSearchParams(location.search);
@@ -99,19 +41,7 @@
   })();
 
   /* ------------------------------------------------------------------
-     3. "PREPARED FOR" BANNER
-  ------------------------------------------------------------------ */
-  function updatePrepared() {
-    const n = f.name.value.trim(), c = f.company.value.trim();
-    if (!n && !c) { prepared.hidden = true; return; }
-    prepared.hidden = false;
-    prepared.textContent = `Resume prepared for ${n || "you"}${c ? ` at ${c}` : ""} · ${fmtShort(frozenAt || new Date())}`;
-  }
-  ["input", "change"].forEach(ev => form.addEventListener(ev, updatePrepared));
-  updatePrepared();
-
-  /* ------------------------------------------------------------------
-     4. VALIDATION
+     2. VALIDATION
   ------------------------------------------------------------------ */
   function setError(input, el, msg) {
     el.textContent = msg;
@@ -132,10 +62,9 @@
     input.addEventListener("input", () => setError(input, err[k], "")));
 
   /* ------------------------------------------------------------------
-     5. BUILD THE MESSAGE
+     3. BUILD THE MESSAGE
   ------------------------------------------------------------------ */
   function collect() {
-    const at = frozenAt || new Date();
     return {
       company:  f.company.value.trim(),
       name:     f.name.value.trim(),
@@ -143,10 +72,6 @@
       position: f.position.value.trim(),
       email:    f.email.value.trim(),
       message:  f.message.value.trim(),
-      time:     fmtFull(at),
-      timezone: `${tz} (${offsetLabel(at)})`,
-      iso:      at.toISOString(),
-      source,
     };
   }
 
@@ -160,10 +85,7 @@
       d.message  ? `\n${d.message}` : "",
       "",
       "--",
-      "Sent from your portfolio's recruiter page",
-      `Detected: ${d.time} · ${d.timezone}`,
-      `Arrived from: ${d.source}`,
-      `UTC: ${d.iso}`,
+      "Sent from Rijul Jain's portfolio",
     ].filter((line, i, a) => !(line === "" && a[i - 1] === "")).join("\n");
   }
 
@@ -196,7 +118,7 @@
   }
 
   /* ------------------------------------------------------------------
-     6. SUBMIT
+     4. SUBMIT
   ------------------------------------------------------------------ */
   const success = $("success");
   const showSuccess = (d, sent) => {
@@ -217,8 +139,6 @@
     if (f.trap.value) return;                    // bots fill the hidden field
     if (!validate()) return;
 
-    frozenAt = new Date();                       // freeze the detected time at submit
-    tick();
     const d = collect();
     const btn = $("send-btn");
 
@@ -247,10 +167,8 @@
   });
   $("s-copy").addEventListener("click", () => copyText($("s-summary").textContent, $("s-copy"), "Copy details"));
   $("s-edit").addEventListener("click", () => {
-    frozenAt = null;
     success.hidden = true;
     form.hidden = false;
-    tick();
     f.company.focus();
   });
 })();
