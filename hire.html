@@ -20,8 +20,6 @@
   <a class="skip-link" href="#main">Skip to content</a>
 
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
-  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
-  <div class="backdrop-glow" aria-hidden="true"></div>
 
   <!-- ===================== HEADER ===================== -->
   <header class="site-header" id="site-header">
@@ -30,11 +28,8 @@
       <span>Rijul Jain</span>
     </a>
     <nav class="site-nav" id="site-nav" aria-label="Portfolio sections">
-      <a href="index.html#about" class="nav-link">About</a>
-      <a href="index.html#projects" class="nav-link">Initiatives</a>
+      <a href="index.html#projects" class="nav-link">Work</a>
       <a href="index.html#experience" class="nav-link">Experience</a>
-      <a href="index.html#education" class="nav-link">Education</a>
-      <a href="index.html#certifications" class="nav-link">Certs</a>
       <a href="index.html#skills" class="nav-link">Skills</a>
       <a href="index.html#contact" class="nav-link">Contact</a>
       <a href="hire.html" class="nav-link nav-cta" aria-current="page">Recruiters</a>
@@ -52,18 +47,12 @@
 
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
     <nav aria-label="Mobile navigation">
-      <a href="index.html#about"          class="mobile-link">About</a>
-      <a href="index.html#projects"       class="mobile-link">Initiatives</a>
+      <a href="index.html#projects"       class="mobile-link">Work</a>
       <a href="index.html#experience"     class="mobile-link">Experience</a>
-      <a href="index.html#education"      class="mobile-link">Education</a>
-      <a href="index.html#certifications" class="mobile-link">Certifications</a>
       <a href="index.html#skills"         class="mobile-link">Skills</a>
       <a href="index.html#contact"        class="mobile-link">Contact</a>
       <a href="hire.html" class="mobile-link active" aria-current="page">For Recruiters</a>
       <a href="assets/Rijul_Jain_Resume.pdf" download class="mobile-link mobile-link-dl">Download Resume</a>
-      <button class="mobile-link fx-menu" type="button" data-fx-toggle aria-pressed="true" aria-label="Toggle background effects">
-        <span class="fx-dot" aria-hidden="true"></span><span class="fx-label">Effects on</span>
-      </button>
     </nav>
   </div>
 
@@ -74,25 +63,48 @@
       <p class="eyebrow reveal-up">For recruiters &amp; hiring teams</p>
       <h1 class="reveal-up" style="--delay:0.05s">Hiring? <span class="grad-text">Let's talk.</span></h1>
       <p class="page-lead reveal-up" style="--delay:0.1s">
-        Tell me who you are and what you're hiring for. I'll get your details in a ready-to-send email,
-        and you can preview or download my resume right here.
+        Review my resume, then email me about the role. If you prefer, use the form below to prepare a message with the details I need.
       </p>
-      <p class="time-chip reveal-up" style="--delay:0.15s" aria-live="off">
-        <span class="live-dot" aria-hidden="true"></span>
-        <span>Visit detected:</span>
-        <time id="chip-time">…</time>
-      </p>
+      <div class="hero-actions recruiter-hero-actions reveal-up" style="--delay:0.15s">
+        <a class="button primary" href="assets/Rijul_Jain_Resume.pdf" target="_blank" rel="noopener">View Resume</a>
+        <a class="button secondary" href="mailto:jainrijul02@gmail.com">Email Me</a>
+      </div>
     </section>
 
     <!-- ===================== FORM + RESUME ===================== -->
     <section class="hire-layout section-shell" aria-label="Recruiter details and resume">
 
+      <!-- Resume -->
+      <div class="hire-card reveal-up" style="--delay:0.08s" id="resume">
+        <h2 class="hire-title">Resume</h2>
+        <p class="hire-sub">Rijul Jain · IT Administrator · Jaipur, Rajasthan, India</p>
+
+        <div class="form-actions resume-actions">
+          <a class="button primary" href="assets/Rijul_Jain_Resume.pdf" download>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download PDF
+          </a>
+          <a class="button secondary" href="assets/Rijul_Jain_Resume.pdf" target="_blank" rel="noopener">Open in new tab</a>
+        </div>
+
+        <dl class="glance" aria-label="Resume at a glance">
+          <div><dt>Now</dt><dd>IT Administrator at LMDmax, Jaipur (Jun 2025 - Present)</dd></div>
+          <div><dt>Scope</dt><dd>Google Workspace administration and migration for 450+ users</dd></div>
+          <div><dt>Core</dt><dd>JumpCloud IAM, Google Workspace, Fortinet FortiGate 80F &amp; 120G, LAN/WAN, ISO/IEC 27001 support</dd></div>
+          <div><dt>Education</dt><dd>BCA, Shridhar University (Aug 2024 - Present)</dd></div>
+          <div><dt>Credentials</dt><dd>DevOps Expert, Cloud Computing, Ethical Hacking Expert, IT Essential, SCSU</dd></div>
+          <div><dt>Looking for</dt><dd>IT infrastructure and security-focused roles</dd></div>
+        </dl>
+
+        <object class="resume-embed" data="assets/Rijul_Jain_Resume.pdf#toolbar=0&amp;view=FitH" type="application/pdf" aria-label="Resume preview">
+          <p class="hire-sub">Your browser can't show the preview. Use the download button above.</p>
+        </object>
+      </div>
+
       <!-- Details form -->
       <div class="hire-card reveal-up" id="form-card">
-        <h2 class="hire-title">Hiring details</h2>
+        <h2 class="hire-title">Prepare an email</h2>
         <p class="hire-sub">Fields marked <span class="req">*</span> are required.</p>
-
-        <div class="prepared" id="prepared" role="status" aria-live="polite" hidden></div>
 
         <form id="hire-form" novalidate>
           <div class="field-row">
@@ -142,12 +154,6 @@
             <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
           </div>
 
-          <dl class="auto-box" aria-label="Automatically detected details">
-            <div class="auto-row"><dt>Date &amp; time</dt><dd id="d-time">…</dd></div>
-            <div class="auto-row"><dt>Time zone</dt><dd id="d-tz">…</dd></div>
-            <div class="auto-row"><dt>Arrived from</dt><dd id="d-source">…</dd></div>
-          </dl>
-
           <div class="form-actions">
             <button class="button primary" type="submit" id="send-btn">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
@@ -171,33 +177,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Resume -->
-      <div class="hire-card reveal-up" style="--delay:0.08s" id="resume">
-        <h2 class="hire-title">Resume</h2>
-        <p class="hire-sub">Rijul Jain · IT Administrator · Jaipur, Rajasthan, India</p>
-
-        <div class="form-actions resume-actions">
-          <a class="button primary" href="assets/Rijul_Jain_Resume.pdf" download>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Download PDF
-          </a>
-          <a class="button secondary" href="assets/Rijul_Jain_Resume.pdf" target="_blank" rel="noopener">Open in new tab</a>
-        </div>
-
-        <dl class="glance" aria-label="Resume at a glance">
-          <div><dt>Now</dt><dd>IT Administrator at LMDmax, Jaipur (Jun 2025 - Present)</dd></div>
-          <div><dt>Scope</dt><dd>450+ employees supported</dd></div>
-          <div><dt>Core</dt><dd>JumpCloud IAM, Google Workspace, Fortinet FortiGate 80F &amp; 120G, LAN/WAN, ISO/IEC 27001 support</dd></div>
-          <div><dt>Education</dt><dd>BCA, Shridhar University (Aug 2024 - Present)</dd></div>
-          <div><dt>Credentials</dt><dd>DevOps Expert, Cloud Computing, Ethical Hacking Expert, IT Essential, SCSU</dd></div>
-          <div><dt>Looking for</dt><dd>IT infrastructure and security-focused roles</dd></div>
-        </dl>
-
-        <object class="resume-embed" data="assets/Rijul_Jain_Resume.pdf#toolbar=0&amp;view=FitH" type="application/pdf" aria-label="Resume preview">
-          <p class="hire-sub">Your browser can't show the preview. Use the download button above.</p>
-        </object>
-      </div>
     </section>
 
     <!-- ===================== OTHER WAYS ===================== -->
@@ -218,14 +197,9 @@
 
   </main>
 
-  <button class="fx-toggle" type="button" data-fx-toggle aria-pressed="true" aria-label="Toggle background effects">
-    <span class="fx-dot" aria-hidden="true"></span><span class="fx-label">Effects on</span>
-  </button>
-
   <footer class="site-footer">
     <p>Designed &amp; developed by <strong>Rijul Jain</strong> · <span class="footer-year"></span></p>
     <p class="footer-tag">rijul@itops:~$ echo "secure systems, support people"</p>
-    <p class="footer-tag"><a href="login.html" class="portal-link">rijul@itops:~$ ./secure-access --portal</a></p>
   </footer>
 
   <script src="script.js"></script>

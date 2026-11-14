@@ -19,15 +19,6 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- ===================== PAGE LOADER ===================== -->
-  <div class="page-loader" id="page-loader" aria-live="polite" aria-label="Loading portfolio">
-    <div class="loader-inner">
-      <div class="loader-logo">RJ</div>
-      <div class="loader-bar-wrap"><div class="loader-bar" id="loader-bar"></div></div>
-      <p class="loader-text" id="loader-text">Initializing…</p>
-    </div>
-  </div>
-
   <!-- ===================== MODAL OVERLAY ===================== -->
   <div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
     <div class="modal-box" id="modal-box">
@@ -57,8 +48,6 @@
   </div>
 
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
-  <div class="aurora" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-  <div class="backdrop-glow" aria-hidden="true"></div>
 
   <!-- ===================== HEADER ===================== -->
   <header class="site-header" id="site-header">
@@ -67,14 +56,11 @@
       <span>Rijul Jain</span>
     </a>
     <nav class="site-nav" id="site-nav" aria-label="Portfolio sections">
-      <a href="#about" class="nav-link">About</a>
-      <a href="#projects" class="nav-link">Initiatives</a>
+      <a href="#projects" class="nav-link">Work</a>
       <a href="#experience" class="nav-link">Experience</a>
-      <a href="#education" class="nav-link">Education</a>
-      <a href="#certifications" class="nav-link">Certs</a>
       <a href="#skills" class="nav-link">Skills</a>
       <a href="#contact" class="nav-link">Contact</a>
-      <a href="hire.html" class="nav-link nav-cta">Recruiters</a>
+      <a href="hire.html" class="nav-link nav-cta">For Recruiters</a>
     </nav>
     <div class="header-actions">
       <button class="terminal-trigger-btn" id="terminal-trigger-btn" aria-label="Open interactive terminal" title="Open terminal">
@@ -94,18 +80,12 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
     <nav aria-label="Mobile navigation">
-      <a href="#about"          class="mobile-link">About</a>
-      <a href="#projects"       class="mobile-link">Initiatives</a>
+      <a href="#projects"       class="mobile-link">Work</a>
       <a href="#experience"     class="mobile-link">Experience</a>
-      <a href="#education"      class="mobile-link">Education</a>
-      <a href="#certifications" class="mobile-link">Certifications</a>
       <a href="#skills"         class="mobile-link">Skills</a>
       <a href="#contact"        class="mobile-link">Contact</a>
       <a href="hire.html"       class="mobile-link">For Recruiters</a>
       <a href="assets/Rijul_Jain_Resume.pdf" download class="mobile-link mobile-link-dl">Download Resume</a>
-      <button class="mobile-link fx-menu" type="button" data-fx-toggle aria-pressed="true" aria-label="Toggle background effects">
-        <span class="fx-dot" aria-hidden="true"></span><span class="fx-label">Effects on</span>
-      </button>
     </nav>
   </div>
 
@@ -113,56 +93,27 @@
 
     <!-- ===================== HERO ===================== -->
     <section id="home" class="hero section-shell">
-      <div class="hero-deco" aria-hidden="true">
-        <svg class="deco-static" viewBox="0 0 600 600" fill="none">
-          <defs>
-            <linearGradient id="decoGrad" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#1C4D8D"/><stop offset="0.55" stop-color="#0F2854"/><stop offset="1" stop-color="#1C4D8D"/>
-            </linearGradient>
-          </defs>
-          <circle cx="300" cy="300" r="290" stroke="url(#decoGrad)" stroke-opacity="0.45" stroke-width="1.5"/>
-          <circle cx="300" cy="300" r="100" stroke="url(#decoGrad)" stroke-opacity="0.35" stroke-dasharray="2 10"/>
-        </svg>
-        <svg class="deco-spin" viewBox="0 0 600 600" fill="none">
-          <circle cx="300" cy="300" r="230" stroke="url(#decoGrad)" stroke-opacity="0.55" stroke-width="1.5" stroke-dasharray="4 14" stroke-linecap="round"/>
-          <circle cx="300" cy="70" r="8" fill="#1C4D8D"/><circle cx="530" cy="300" r="5" fill="#0F2854"/>
-        </svg>
-        <svg class="deco-spin-rev" viewBox="0 0 600 600" fill="none">
-          <circle cx="300" cy="300" r="165" stroke="#1C4D8D" stroke-opacity="0.4" stroke-width="1.5"/>
-          <circle cx="135" cy="300" r="7" fill="#1C4D8D"/><circle cx="300" cy="465" r="5" fill="#0F2854"/>
-        </svg>
-      </div>
       <div class="hero-copy">
-        <p class="eyebrow" id="eyebrow-text">rijul@portfolio:~$ <span id="typewriter"></span><span class="cursor-blink">█</span></p>
+        <p class="eyebrow" id="eyebrow-text">IT operations · Jaipur, India</p>
         <h1 class="reveal-up"><span class="grad-text">Rijul Jain</span></h1>
         <p class="role reveal-up" style="--delay:0.1s">Information Technology Administrator</p>
         <p class="hero-text reveal-up" style="--delay:0.2s">
-          I manage IT infrastructure and operations for 450+ employees: identity and access, Google Workspace, Fortinet networking, and ISO/IEC 27001 compliance, with a goal of growing into a security engineer.
+          I keep access, collaboration, and networks running securely. I manage Google Workspace for 450+ users, led a Zoho Mail migration, and work hands-on with JumpCloud, Fortinet, and ISO/IEC 27001 support.
         </p>
         <div class="hero-actions reveal-up" style="--delay:0.3s">
-          <a class="button primary" id="view-projects-btn" href="#projects">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            View Key Initiatives
+          <a class="button primary" id="view-projects-btn" href="assets/Rijul_Jain_Resume.pdf" target="_blank" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2h9l4 4v16H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/><path d="M14 2v5h5M8 12h8M8 16h8"/></svg>
+            View Resume
           </a>
-          <a class="button secondary" id="contact-btn" href="#contact">Contact Me</a>
-          <a class="button secondary" href="https://github.com/RijulJain001" target="_blank" rel="noreferrer" aria-label="View GitHub profile">GitHub</a>
-          <button class="button ghost" id="hero-terminal-btn" aria-label="Open interactive terminal">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
-            Try Terminal
-          </button>
+          <a class="button secondary" href="#projects">See Selected Work</a>
+          <a class="hero-contact-link" id="contact-btn" href="mailto:jainrijul02@gmail.com">Contact Me <span aria-hidden="true">↗</span></a>
         </div>
       </div>
 
       <div class="profile-col reveal-up" style="--delay:0.15s">
       <div class="profile-panel">
-        <span class="profile-ring" aria-hidden="true"></span>
-        <span class="float-chip c1"><i></i>ISO 27001</span>
-        <span class="float-chip c2"><i></i>Workspace</span>
-        <span class="float-chip c3"><i></i>JumpCloud</span>
-        <span class="float-chip c4"><i></i>Fortinet</span>
         <div class="profile-frame">
           <img src="assets/profile.jpg" alt="Portrait of Rijul Jain" onerror="this.onerror=null; this.src='assets/profile-placeholder.svg'; this.alt='RJ monogram';">
-          <div class="scan-line" aria-hidden="true"></div>
         </div>
         <div class="profile-meta">
           <span class="status-dot"></span>
@@ -174,39 +125,31 @@
             <p><span class="term-prompt">rijul@itops:~$</span> <span class="term-cmd" id="term-main-cmd"></span></p>
             <p><span class="term-ok">[+]</span> focus: IT operations, IAM, security compliance</p>
             <p><span class="term-ok">[+]</span> stack: JumpCloud, Google Workspace, Fortinet, LAN/WAN</p>
-            <p><span class="term-ok">[+]</span> status: supporting 450+ employees across the organization</p>
+            <p><span class="term-ok">[+]</span> scope: Google Workspace for 450+ users</p>
           </div>
         </div>
       </div>
       </div>
     </section>
 
-    <!-- ===================== TECH MARQUEE ===================== -->
-    <div class="marquee" aria-label="Technology stack">
-      <div class="marquee-track">
-        <span class="marquee-item">Google Workspace</span><span class="marquee-item">JumpCloud IAM</span><span class="marquee-item">Fortinet FortiGate</span><span class="marquee-item">ISO/IEC 27001</span><span class="marquee-item">Windows Server</span><span class="marquee-item">Linux</span><span class="marquee-item">LAN / WAN Networking</span><span class="marquee-item">Active Directory</span><span class="marquee-item">UNIRMS</span><span class="marquee-item">WE360</span><span class="marquee-item">IT Asset Management</span><span class="marquee-item">Python</span>
-        <span class="marquee-item" aria-hidden="true">Google Workspace</span><span class="marquee-item" aria-hidden="true">JumpCloud IAM</span><span class="marquee-item" aria-hidden="true">Fortinet FortiGate</span><span class="marquee-item" aria-hidden="true">ISO/IEC 27001</span><span class="marquee-item" aria-hidden="true">Windows Server</span><span class="marquee-item" aria-hidden="true">Linux</span><span class="marquee-item" aria-hidden="true">LAN / WAN Networking</span><span class="marquee-item" aria-hidden="true">Active Directory</span><span class="marquee-item" aria-hidden="true">UNIRMS</span><span class="marquee-item" aria-hidden="true">WE360</span><span class="marquee-item" aria-hidden="true">IT Asset Management</span><span class="marquee-item" aria-hidden="true">Python</span>
-      </div>
-    </div>
-
     <!-- ===================== STATS COUNTER ===================== -->
     <section class="stats-section section-shell" aria-label="Portfolio statistics">
       <div class="stats-grid">
         <div class="stat-card reveal-up" style="--delay:0s">
-          <div class="stat-value"><span class="stat-num" data-target="450" id="stat-users">0</span><span class="stat-plus">+</span></div>
-          <p class="stat-label">Employees Supported</p>
+          <div class="stat-value"><span class="stat-num" id="stat-users">450</span><span class="stat-plus">+</span></div>
+          <p class="stat-label">Google Workspace Users</p>
         </div>
         <div class="stat-card reveal-up" style="--delay:0.08s">
-          <div class="stat-value"><span class="stat-num" data-target="5" id="stat-platforms">0</span></div>
-          <p class="stat-label">Platforms Managed</p>
+          <div class="stat-value"><span class="stat-num" id="stat-platforms">3</span></div>
+          <p class="stat-label">Selected Initiatives</p>
         </div>
         <div class="stat-card reveal-up" style="--delay:0.16s">
-          <div class="stat-value"><span class="stat-num" data-target="3" id="stat-roles">0</span></div>
+          <div class="stat-value"><span class="stat-num" id="stat-roles">3</span></div>
           <p class="stat-label">IT Roles Held</p>
         </div>
         <div class="stat-card reveal-up" style="--delay:0.24s">
-          <div class="stat-value"><span class="stat-num" data-target="2" id="stat-firewalls">0</span></div>
-          <p class="stat-label">FortiGate Firewalls Managed</p>
+          <div class="stat-value"><span class="stat-num" id="stat-firewalls">2</span></div>
+          <p class="stat-label">FortiGate Models Used</p>
         </div>
       </div>
     </section>
@@ -233,9 +176,9 @@
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
           </div>
           <p>
-            I currently work as an IT Administrator at LMDmax Corp, supporting 450+ employees across
-            identity and access management, Google Workspace, Fortinet networking, IT asset management, and
-            ISO/IEC 27001 compliance.
+            I currently work as an IT Administrator at LMDmax Corp. My work spans identity and access,
+            Google Workspace administration for 450+ users, Fortinet networking, IT asset management,
+            and ISO/IEC 27001 audit support.
           </p>
         </div>
       </div>
@@ -246,20 +189,31 @@
       <div class="section-heading reveal-up">
         <p class="eyebrow">Work</p>
         <h2>Key Initiatives</h2>
+        <p class="section-intro">The systems I work on, the responsibilities I own, and the results I can explain in an interview.</p>
       </div>
       <div class="cards-grid">
 
-        <article class="card reveal-up" style="--delay:0s"
+        <article class="card featured-card reveal-up" style="--delay:0s"
           data-modal="true"
           data-title="Google Workspace Migration"
           data-kicker="Enterprise Email"
-          data-desc="Executed the migration from Zoho Mail to Google Workspace, moving email and collaboration for 450+ users securely and with minimal operational downtime."
-          data-details="• Executed the Zoho Mail to Google Workspace migration with secure data transfer&#10;• Kept operational downtime to a minimum during the move&#10;• Manage Google Workspace for 450+ users: provisioning, access control, and security policies&#10;• Administer groups, shared drives, and email through the Google Admin Console"
+          data-challenge="Move business email from Zoho Mail while keeping day-to-day communication available."
+          data-contribution="Executed the migration and now administer user provisioning, access control, security policies, groups, shared drives, and email in Google Workspace."
+          data-outcome="450+ users moved to Google Workspace with minimal operational downtime."
           data-tags="Google Workspace,Migration,Admin Console,Support">
           <div class="card-accent" aria-hidden="true"></div>
           <p class="card-kicker">Enterprise Email</p>
           <h3>Google Workspace Migration</h3>
-          <p>Moved business email from Zoho Mail to Google Workspace for 450+ users with minimal downtime.</p>
+          <p>Moved business email from Zoho Mail to Google Workspace while keeping operational downtime to a minimum.</p>
+          <div class="migration-visual" aria-hidden="true">
+            <span class="migration-label">Migration path</span>
+            <div class="migration-route">
+              <span>Zoho Mail</span>
+              <svg viewBox="0 0 64 16" fill="none"><path d="M1 8h60m-7-6 7 6-7 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Google Workspace</span>
+            </div>
+            <span class="migration-scale">450+ users</span>
+          </div>
           <div class="tag-row"><span>Google Workspace</span><span>Migration</span><span>Admin</span></div>
           <button class="card-cta" aria-label="View Google Workspace Migration details">
             View Details
@@ -269,17 +223,19 @@
 
         <article class="card reveal-up" style="--delay:0.1s"
           data-modal="true"
-          data-title="JumpCloud IAM Rollout"
+          data-title="JumpCloud IAM Operations"
           data-kicker="Identity &amp; Access"
-          data-desc="Administer JumpCloud as the central identity and device platform, covering SSO, MFA, device enrollment, and the full user lifecycle."
-          data-details="• Configured SSO and MFA for secure access across the organization&#10;• Enrolled and managed devices with endpoint security and policy enforcement&#10;• Handled user lifecycle management, from onboarding to offboarding&#10;• Kept access control consistent as part of core IT operations"
+          data-challenge="Keep identity, device access, and onboarding consistent as people join, change roles, or leave."
+          data-contribution="Administer JumpCloud SSO, MFA, device enrollment, endpoint policies, and the user lifecycle from onboarding to offboarding."
+          data-outcome="A central place to manage access and enforce device policies across IT operations."
           data-tags="JumpCloud,IAM,SSO,MFA,Endpoint Management">
           <div class="card-accent" aria-hidden="true"></div>
           <p class="card-kicker">Identity &amp; Access</p>
-          <h3>JumpCloud IAM Rollout</h3>
-          <p>Centralized identity, SSO, MFA, and device management to keep access consistent and secure.</p>
+          <h3>JumpCloud IAM Operations</h3>
+          <p>Administer SSO, MFA, device enrollment, and user lifecycle controls in one identity platform.</p>
+          <p class="case-proof"><strong>SSO + MFA</strong> access controls</p>
           <div class="tag-row"><span>JumpCloud</span><span>IAM</span><span>SSO</span></div>
-          <button class="card-cta" aria-label="View JumpCloud IAM Rollout details">
+          <button class="card-cta" aria-label="View JumpCloud IAM Operations details">
             View Details
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
@@ -289,13 +245,15 @@
           data-modal="true"
           data-title="ISO 27001 &amp; Fortinet Operations"
           data-kicker="Security &amp; Compliance"
-          data-desc="Support ISO/IEC 27001 compliance and audit activity while administering Fortinet FortiGate 80F and 120G firewalls."
-          data-details="• Configured and maintained FortiGate 80F and 120G firewalls&#10;• Implemented firewall policies, VPN connectivity, NAT, and network security controls&#10;• Maintained IT documentation, security controls, and asset registers for ISO/IEC 27001&#10;• Prepared audit evidence to support compliance activities"
+          data-challenge="Keep network controls operational and audit evidence organized."
+          data-contribution="Configure FortiGate 80F and 120G policies, VPN, and NAT; maintain documentation, asset registers, security controls, and audit evidence."
+          data-outcome="Network administration and documented controls that support ISO/IEC 27001 audit activity."
           data-tags="ISO/IEC 27001,Fortinet,VPN,NAT,Compliance">
           <div class="card-accent" aria-hidden="true"></div>
           <p class="card-kicker">Security &amp; Compliance</p>
           <h3>ISO 27001 &amp; Fortinet Operations</h3>
-          <p>Firewall administration and ISO/IEC 27001 documentation, controls, and audit evidence.</p>
+          <p>Maintain FortiGate network controls and the records needed for ISO/IEC 27001 audit support.</p>
+          <p class="case-proof"><strong>80F + 120G</strong> FortiGate models</p>
           <div class="tag-row"><span>ISO 27001</span><span>Fortinet</span><span>Compliance</span></div>
           <button class="card-cta" aria-label="View ISO 27001 and Fortinet Operations details">
             View Details
@@ -320,7 +278,7 @@
         </div>
 
         <div class="env-body reveal-up" style="--delay:0.08s">
-          <div class="env-node env-users"><span class="env-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><h3>Users &amp; devices</h3><p>450+ employees on managed devices, from onboarding to offboarding.</p></div>
+          <div class="env-node env-users"><span class="env-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><h3>Users &amp; devices</h3><p>Onboarding, offboarding, device enrollment, and access policies.</p></div>
           <div class="env-lanes">
             <div class="env-lane">
               <span class="env-lane-label">Network path</span>
@@ -363,7 +321,7 @@
             <span class="timeline-date">June 2025 - Present</span>
             <h3>IT Administrator</h3>
             <p class="timeline-sub">LMDmax Corp · Jaipur, Rajasthan</p>
-            <ul class="timeline-list"><li>Primary IT administrator for end-to-end infrastructure and operations, supporting 450+ employees.</li><li>Administer JumpCloud IAM: SSO, MFA, device enrollment, user lifecycle, endpoint security, and policy enforcement.</li><li>Manage Google Workspace for 450+ users, including provisioning, access control, groups, shared drives, and email.</li><li>Executed the Zoho Mail to Google Workspace migration with secure data transfer and minimal downtime.</li><li>Configure Fortinet FortiGate 80F and 120G firewalls: policies, VPN, NAT, and network security controls.</li><li>Run enterprise LAN infrastructure: structured cabling, TCP/IP, DHCP, DNS, VLANs, and switching.</li><li>Own the IT asset lifecycle, from procurement and deployment to warranty tracking, repairs, and onboarding/offboarding.</li><li>Support ISO/IEC 27001 compliance with documentation, security controls, asset registers, and audit evidence.</li></ul>
+            <ul class="timeline-list"><li>Administer IT infrastructure and operations across identity, collaboration, networks, and end-user support.</li><li>Administer JumpCloud IAM: SSO, MFA, device enrollment, user lifecycle, endpoint security, and policy enforcement.</li><li>Manage Google Workspace for 450+ users, including provisioning, access control, groups, shared drives, and email.</li><li>Executed the Zoho Mail to Google Workspace migration with secure data transfer and minimal downtime.</li><li>Configure Fortinet FortiGate 80F and 120G firewalls: policies, VPN, NAT, and network security controls.</li><li>Run enterprise LAN infrastructure: structured cabling, TCP/IP, DHCP, DNS, VLANs, and switching.</li><li>Own the IT asset lifecycle, from procurement and deployment to warranty tracking, repairs, and onboarding/offboarding.</li><li>Support ISO/IEC 27001 compliance with documentation, security controls, asset registers, and audit evidence.</li></ul>
           </div>
         </article>
         <article class="timeline-item reveal-up" style="--delay:0.1s">
@@ -669,7 +627,7 @@
       <div class="recruiter-cta reveal-up">
         <div>
           <h3>Hiring for an IT or security role?</h3>
-          <p>Share your company and role details, and get my resume plus a ready-to-send email.</p>
+          <p>Review my resume and reach out directly about an IT or security-focused role.</p>
         </div>
         <a class="button primary" href="hire.html">For Recruiters</a>
       </div>
@@ -677,14 +635,9 @@
 
   </main>
 
-  <button class="fx-toggle" type="button" data-fx-toggle aria-pressed="true" aria-label="Toggle background effects">
-    <span class="fx-dot" aria-hidden="true"></span><span class="fx-label">Effects on</span>
-  </button>
-
   <footer class="site-footer">
     <p>Designed &amp; developed by <strong>Rijul Jain</strong> · <span class="footer-year"></span></p>
     <p class="footer-tag">rijul@itops:~$ echo "secure systems, support people"</p>
-    <p class="footer-tag"><a href="login.html" class="portal-link">rijul@itops:~$ ./secure-access --portal</a></p>
   </footer>
 
   <script src="script.js"></script>
